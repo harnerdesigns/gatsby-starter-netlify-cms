@@ -67,7 +67,7 @@ const TeamCard = ({ person }) => (
       to={person.fields.slug}
       style={{ textDecoration: `none`, color: "#212121" }}
     >
-      <img src={person.frontmatter.featuredimage.childImageSharp.resize.src} />
+      <img src={person.frontmatter.featuredImage.childImageSharp.resize.src} />
       <Meta>
         <h4>{person.frontmatter.name}</h4>
         <h5>{person.frontmatter.jobTitle}</h5>

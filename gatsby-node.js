@@ -2,6 +2,7 @@ const _ = require('lodash')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
+const { attachFields } = require(`gatsby-plugin-node-fields`)
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
@@ -84,4 +85,58 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       value,
     })
   }
+
+  attachFields(node, actions, getNode, descriptors)
 }
+
+
+
+function isProjectNode(node) {
+  if (node.internal.type !== "MarkdownRemark") {
+    return false
+  }
+
+  if (node.frontmatter.templateKey !== "project") {
+    return false
+  }
+
+  return true
+}
+
+const descriptors = [
+  {
+    predicate: isProjectNode,
+    fields: [
+      {
+        name: "weight",
+        getter: node => node.frontmatter.weight,
+        defaultValue: 0,
+      },
+      {
+        name: "ogImage",
+        getter: node => node.frontmatter.ogImage,
+        defaultValue: "",
+      },
+      {
+        name: "youtubeLink",
+        getter: node => node.frontmatter.youtubeLink,
+        defaultValue: "",
+      },
+      {
+        name: "externalLink",
+        getter: node => node.frontmatter.externalLink,
+        defaultValue: "",
+      },
+      {
+        name: "clients",
+        getter: node => node.frontmatter.clients,
+        defaultValue: [],
+      },
+      {
+        name: "type",
+        getter: node => node.frontmatter.type,
+        defaultValue: "Project",
+      },
+    ],
+  },
+]

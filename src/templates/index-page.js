@@ -19,6 +19,7 @@ export const IndexPageTemplate = ({
   image,
   team,
   projects,
+  storyTeller
 }) => (
     <div>
 
@@ -26,8 +27,21 @@ export const IndexPageTemplate = ({
         <Img fluid={image.childImageSharp.fluid} style={{ width: "100%", height: "100%" }} />
       </Container>
 
+      <Container>
+        <h1>We Are Makers.</h1>
+        <Grid col={3}>
+          {projects.map(({ node: project }) => (
+            <ProjectCard project={project} />
+          ))}
+        </Grid>
 
-      <Container style={{ minHeight: '60vh' }}>
+
+      </Container>
+
+      <Container style={{
+        minHeight: '60vh', backgroundImage: `url(${
+          !!storyTeller.childImageSharp ? storyTeller.childImageSharp.fluid.src : storyTeller
+          })`, backgroundSize: "cover", backgroundPosition: "center center", backgroundAttachment: "fixed" }}>
         <h1 style={{ color: "#fff", margin: "2em 0" }}>We Are Storytellers.</h1>
         <Grid col={3} style={{ background: "transparent", width: "80%" }}>
           <SkillsCard>
@@ -40,8 +54,7 @@ export const IndexPageTemplate = ({
             <h4>Social Strategy</h4>
           </SkillsCard>
         </Grid>
-
-
+      
       </Container>
 
 
@@ -66,6 +79,7 @@ const IndexPage = ({ data }) => {
         image={frontmatter.image}
         team={team.edges}
         projects={projects.edges}
+        storyTeller={storyTeller}
       />
     </Layout>
   )
@@ -129,7 +143,7 @@ export const pageQuery = graphql`
         frontmatter {
           name
           jobTitle
-          featuredimage {
+          featuredImage {
             childImageSharp {
               resize {
                 src
@@ -147,18 +161,20 @@ export const pageQuery = graphql`
     edges {
       node {
         frontmatter {
-          name
-          jobTitle
-          featuredimage {
+          title
+          
+          featuredImage {
             childImageSharp {
-              resize {
+              resize(width: 800) {
                 src
               }
             }
           }
         }
         fields {
+          type
           slug
+          clients
         }
       }
     }
@@ -176,7 +192,7 @@ const Container = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position:relative;
+  position: relative;
   padding: 5vh 1vh;
 
   & > h1{
