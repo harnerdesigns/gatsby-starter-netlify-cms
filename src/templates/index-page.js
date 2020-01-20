@@ -1,130 +1,71 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
+import Img from 'gatsby-image'
+import styled from "styled-components"
+
 
 import Layout from '../components/Layout'
-import Features from '../components/Features'
 import BlogRoll from '../components/BlogRoll'
+import TeamCard from "../components/team/TeamCard"
+import ProjectCard from "../components/project/ProjectCard"
+
+import Grid from "../components/layout/grid"
+
+import { breakpoints } from "../components/breakpoints"
+
 
 export const IndexPageTemplate = ({
   image,
-  title,
-  heading,
-  mainpitch,
-  description,
-  intro,
+  team,
+  projects,
 }) => (
-  <div>
-    <div
-      className="full-width-image margin-top-0"
-      style={{
-        backgroundImage: `url(${
-          !!image.childImageSharp ? image.childImageSharp.fluid.src : image
-        })`,
-        backgroundPosition: `top left`,
-        backgroundAttachment: `fixed`,
-      }}
-    >
-      <div
-        style={{
-          display: 'flex',
-          height: '150px',
-          lineHeight: '1',
-          justifyContent: 'space-around',
-          alignItems: 'left',
-          flexDirection: 'column',
-        }}
-      >
-        <h1
-          className="has-text-weight-bold is-size-3-mobile is-size-2-tablet is-size-1-widescreen"
-          style={{
-            boxShadow:
-              'rgb(255, 68, 0) 0.5rem 0px 0px, rgb(255, 68, 0) -0.5rem 0px 0px',
-            backgroundColor: 'rgb(255, 68, 0)',
-            color: 'white',
-            lineHeight: '1',
-            padding: '0.25em',
-          }}
-        >
-          {title}
-        </h1>
-      </div>
-    </div>
-    <section className="section section--gradient">
-      <div className="container">
-        <div className="section">
-          <div className="columns">
-            <div className="column is-10 is-offset-1">
-              <div className="content">
-                <div className="content">
-                  <div className="tile">
-                    <h1 className="title">{mainpitch.title}</h1>
-                  </div>
-                  <div className="tile">
-                    <h3 className="subtitle">{mainpitch.description}</h3>
-                  </div>
-                </div>
-                <div className="columns">
-                  <div className="column is-12">
-                    <h3 className="has-text-weight-semibold is-size-2">
-                      {heading}
-                    </h3>
-                    <p>{description}</p>
-                  </div>
-                </div>
-                <Features gridItems={intro.blurbs} />
-                <div className="columns">
-                  <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/products">
-                      See all products
-                    </Link>
-                  </div>
-                </div>
-                <div className="column is-12">
-                  <h3 className="has-text-weight-semibold is-size-2">
-                    Latest stories
-                  </h3>
-                  <BlogRoll />
-                  <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/blog">
-                      Read more
-                    </Link>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-)
+    <div>
 
-IndexPageTemplate.propTypes = {
-  image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
-  title: PropTypes.string,
-  heading: PropTypes.string,
-  subheading: PropTypes.string,
-  mainpitch: PropTypes.object,
-  description: PropTypes.string,
-  intro: PropTypes.shape({
-    blurbs: PropTypes.array,
-  }),
-}
+      <Container style={{ padding: 0, minHeight: 0 }}>
+        <Img fluid={image.childImageSharp.fluid} style={{ width: "100%", height: "100%" }} />
+      </Container>
+
+
+      <Container style={{ minHeight: '60vh' }}>
+        <h1 style={{ color: "#fff", margin: "2em 0" }}>We Are Storytellers.</h1>
+        <Grid col={3} style={{ background: "transparent", width: "80%" }}>
+          <SkillsCard>
+            <h4>Brand Identity</h4>
+          </SkillsCard>
+          <SkillsCard>
+            <h4>Audio + Video</h4>
+          </SkillsCard>
+          <SkillsCard>
+            <h4>Social Strategy</h4>
+          </SkillsCard>
+        </Grid>
+
+
+      </Container>
+
+
+      <Container>
+        <h1>This Is Who We Are.</h1>
+        <Grid>
+          {team.map(({ node: member }) => (
+            <TeamCard person={member} />
+          ))}
+        </Grid>
+      </Container>
+    </div>
+  )
 
 const IndexPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark
+  const { frontmatter } = data.index
+  const { team, projects, storyTeller } = data
 
   return (
     <Layout>
       <IndexPageTemplate
         image={frontmatter.image}
-        title={frontmatter.title}
-        heading={frontmatter.heading}
-        subheading={frontmatter.subheading}
-        mainpitch={frontmatter.mainpitch}
-        description={frontmatter.description}
-        intro={frontmatter.intro}
+        team={team.edges}
+        projects={projects.edges}
       />
     </Layout>
   )
@@ -142,38 +83,165 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query IndexPageTemplate {
-    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
-      frontmatter {
-        title
-        image {
-          childImageSharp {
-            fluid(maxWidth: 2048, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
+  index: markdownRemark(frontmatter: {templateKey: {eq: "index-page"}}) {
+    frontmatter {
+      title
+      image {
+        childImageSharp {
+          fluid(maxWidth: 2048, quality: 100) {
+            ...GatsbyImageSharpFluid
           }
         }
-        heading
-        subheading
-        mainpitch {
-          title
-          description
-        }
+      }
+      heading
+      subheading
+      mainpitch {
+        title
         description
-        intro {
-          blurbs {
-            image {
-              childImageSharp {
-                fluid(maxWidth: 240, quality: 64) {
-                  ...GatsbyImageSharpFluid
-                }
+      }
+      description
+      intro {
+        blurbs {
+          image {
+            childImageSharp {
+              fluid(maxWidth: 240, quality: 64) {
+                ...GatsbyImageSharpFluid
               }
             }
-            text
           }
-          heading
-          description
+          text
+        }
+        heading
+        description
+      }
+    }
+  }
+  storyTeller: file(relativePath: {eq: "storytellers.jpg"}) {
+    childImageSharp {
+      fluid(maxWidth: 2400) {
+        ...GatsbyImageSharpFluid
+      }
+    }
+  }
+  team: allMarkdownRemark(filter: {frontmatter: {templateKey: {eq: "team-member"}}}, limit: 6) {
+    edges {
+      node {
+        frontmatter {
+          name
+          jobTitle
+          featuredimage {
+            childImageSharp {
+              resize {
+                src
+              }
+            }
+          }
+        }
+        fields {
+          slug
         }
       }
     }
   }
+  projects: allMarkdownRemark(filter: {frontmatter: {templateKey: {eq: "project"}}}, limit: 6) {
+    edges {
+      node {
+        frontmatter {
+          name
+          jobTitle
+          featuredimage {
+            childImageSharp {
+              resize {
+                src
+              }
+            }
+          }
+        }
+        fields {
+          slug
+        }
+      }
+    }
+  }
+}
+
+`
+
+
+
+const Container = styled.section`
+  width: 100%;
+  min-height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position:relative;
+  padding: 5vh 1vh;
+
+  & > h1{
+    text-align: center;
+  }
+`
+const SkillsCard = styled.div`
+background: #fff;
+padding: 1rem;
+transition: 100ms;
+
+h4{
+  margin: 0;
+  text-align: center;
+}
+
+&:hover{
+  background: #9C27B0;
+  color: #fff;
+}
+`
+
+const Form = styled.form`
+margin: 1em auto;
+font-size: 1.5rem;
+width: 100%;
+
+@media ${breakpoints.laptop} {
+  width: 75%;
+  }
+
+
+input{
+  width: 100%;
+  font-size: 1em;
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+  padding: 0.25em;
+  margin-bottom: 1em;
+
+}
+
+textarea{
+  width: 100%;
+  font-size: 1em;
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+  padding: 0.25em;
+  min-height: 5ch;
+  resize: vertical;
+  margin-bottom: 1em;
+
+}
+
+
+button[type=submit]{
+  width: 100%;
+  text-align: center;
+  font-size: 1em;
+  border: 2px solid #fff; 
+  color: #fff;
+  background: transparent; 
+  padding: 0.5em;
+}
+
 `

@@ -34,11 +34,26 @@ collections:
     slug: "{{slug}}"
     identifier_field: "name"
     fields:
-      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "team-post"}
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "team-member"}
       - {label: "Name", name: "name", widget: "string"}
       - {label: "Job Title", name: "jobTitle", widget: "string"}
       - {label: "Headshot", name: "featuredimage", widget: image}
       - {label: "Body", name: "body", widget: "markdown"}
+  - name: "portfolio"
+    label: "Portfolio"
+    folder: "src/pages/portfolio"
+    create: true
+    slug: "{{slug}}"
+    editor:
+     preview: false
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "project"}
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Featured Image", name: "featuredImage", widget: "image" }
+      - { label: "Clients", name: "clients", widget: "list"}
+      - { label: "YouTube Link", name: "youtubeLink", widget: "string", required: false}
+      - { label: "External Link", name: "externalLink", widget: "string", required: false}
+      - { label: "Type", name: "type", widget: "string"}
 
   - name: "pages"
     label: "Pages"
