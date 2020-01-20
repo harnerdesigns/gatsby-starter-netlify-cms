@@ -140,7 +140,7 @@ export const pageQuery = graphql`
       }
     }
   }
-  team: allMarkdownRemark(filter: {frontmatter: {templateKey: {eq: "team-member"}}}, limit: 6) {
+  team: allMarkdownRemark(filter: {frontmatter: {templateKey: {eq: "team-member"}}}, limit: 6, sort: {fields: fields___weight, order: ASC}) {
     edges {
       node {
         frontmatter {
