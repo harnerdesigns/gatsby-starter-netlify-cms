@@ -96,10 +96,6 @@ function isProjectNode(node) {
     return false
   }
 
-  if (node.frontmatter.templateKey !== "project") {
-    return false
-  }
-
   return true
 }
 
