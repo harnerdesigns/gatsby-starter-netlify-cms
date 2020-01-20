@@ -23,8 +23,11 @@ export const IndexPageTemplate = ({
 }) => (
     <div>
 
-      <Container style={{ padding: 0, minHeight: 0 }}>
-        <Img fluid={image.childImageSharp.fluid} style={{ width: "100%", height: "100%" }} />
+      <Container style={{
+        padding: "1rem", minHeight: "80vh", backgroundImage: `url(${
+          !!image.childImageSharp ? image.childImageSharp.fluid.src : image
+          })`, backgroundSize: "cover", backgroundPosition: "left center", backgroundAttachment: "fixed", alignItems: "flex-end", justifyContent: "flex-end" }} >
+        <h1 style={{fontSize: "8em", margin: 0, padding: "0.5rem", textAlign: "right", background: "#333", color: "#fff", boxShadow: "inset 0 2px 5px rgba(0,0,0,0.5)", lineHeight: 1}}>Sweatshirt</h1>
       </Container>
 
       <Container>
