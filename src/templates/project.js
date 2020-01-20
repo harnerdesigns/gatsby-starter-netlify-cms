@@ -88,7 +88,7 @@ BlogPost.propTypes = {
 export default BlogPost
 
 export const pageQuery = graphql`
-  query TeamMemberByID($id: String!) {
+  query ProjectByID($id: String!) {
     markdownRemark(id: { eq: $id }) {
       id
       html
