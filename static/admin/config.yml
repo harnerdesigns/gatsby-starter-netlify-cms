@@ -55,6 +55,8 @@ collections:
       - { label: "YouTube Link", name: "youtubeLink", widget: "string", required: false}
       - { label: "External Link", name: "externalLink", widget: "string", required: false}
       - { label: "Type", name: "type", widget: "string"}
+      - {label: Images, name: images, widget: list, fields: [{label: Image, name: image, widget: image}, {label: Caption, name: caption, widget: text}]}
+      - { label: "Project Description" name: "body", widget: "markdown"}
 
   - name: "pages"
     label: "Pages"

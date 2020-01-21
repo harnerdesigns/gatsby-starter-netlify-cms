@@ -3,6 +3,7 @@ module.exports = {
     title: 'Sweatshirt Media',
     description:
       'Full Service Media & Design Company. Video, Audio, Web Development & More',
+      author: "@mediasweatshirt"
   },
   plugins: [
     'gatsby-plugin-react-helmet',

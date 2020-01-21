@@ -1,102 +1,105 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { kebabCase } from 'lodash'
-import Helmet from 'react-helmet'
-import { graphql, Link } from 'gatsby'
-import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
+import React from "react"
 
-export const BlogPostTemplate = ({
-  content,
-  contentComponent,
-  description,
-  tags,
-  title,
-  helmet,
-}) => {
-  const PostContent = contentComponent || Content
+import Layout from "../components/Layout"
+import SEO from "../components/seo"
+import { graphql } from "gatsby"
+import styled from "styled-components"
 
-  return (
-    <section className="section">
-      {helmet || ''}
-      <div className="container content">
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
-              {title}
-            </h1>
-            <p>{description}</p>
-            <PostContent content={content} />
-            {tags && tags.length ? (
-              <div style={{ marginTop: `4rem` }}>
-                <h4>Tags</h4>
-                <ul className="taglist">
-                  {tags.map(tag => (
-                    <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ) : null}
-          </div>
-        </div>
-      </div>
-    </section>
-  )
-}
+import { breakpoints } from "../components/breakpoints"
 
-BlogPostTemplate.propTypes = {
-  content: PropTypes.node.isRequired,
-  contentComponent: PropTypes.func,
-  description: PropTypes.string,
-  title: PropTypes.string,
-  helmet: PropTypes.object,
-}
 
-const BlogPost = ({ data }) => {
-  const { markdownRemark: post } = data
+const VideoGrid = styled.div`
+  display: grid; 
+  grid-template-columns: 1fr;
+  align-items: flex-start;
 
+  @media ${breakpoints.laptop} {
+    grid-template-columns: 2fr 1fr;
+  }
+`
+const VideoWrapper = styled.div`
+position: relative;
+    overflow: hidden;
+    padding-top: 56.25%;
+    position: sticky;
+    top: 0;
+`
+const ProjectContent = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 1rem;
+
+  h1,h2{
+    margin: 5px;
+    width: 100%;
+  }
+
+`
+const SingleProject = props => {
+  const {
+    data: { project },
+  } = props
+
+  const videoId = (url) => {
+    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+    var match = url.match(regExp);
+    return (match && match[7].length == 11) ? match[7] : false;
+  };
   return (
     <Layout>
-      <BlogPostTemplate
-        content={post.html}
-        contentComponent={HTMLContent}
-        description={post.frontmatter.description}
-        helmet={
-          <Helmet titleTemplate="%s | Blog">
-            <title>{`${post.frontmatter.title}`}</title>
-            <meta
-              name="description"
-              content={`${post.frontmatter.description}`}
-            />
-          </Helmet>
-        }
-        tags={post.frontmatter.tags}
-        title={post.frontmatter.title}
-      />
+      <SEO title={project.frontmatter.title + " - " + project.fields.type + " " + (project.fields.clients.length ? "for " + project.fields.clients : "")} />
+      <VideoGrid>
+      {project.fields.youtubeLink ? 
+        <VideoWrapper>
+          <iframe style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            border: 0,
+          }} frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src={"https://www.youtube.com/embed/" + videoId(project.fields.youtubeLink) + "?autoplay=0&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0"}></iframe>
+        </VideoWrapper> : ""}
+
+
+        <ProjectContent>
+          <h1>{project.frontmatter.title}</h1>
+          <h2>
+            {project.fields.type}{" "}
+            {project.fields.clients.length ? "for " + project.fields.clients : ""}
+          </h2>
+          <div dangerouslySetInnerHTML={{ __html: project.html }} />
+        </ProjectContent>
+      </VideoGrid>
     </Layout>
   )
 }
 
-BlogPost.propTypes = {
-  data: PropTypes.shape({
-    markdownRemark: PropTypes.object,
-  }),
-}
+export default SingleProject
 
-export default BlogPost
-
-export const pageQuery = graphql`
-  query ProjectByID($id: String!) {
-    markdownRemark(id: { eq: $id }) {
+export const postQuery = graphql`
+  query PostBySlug($id: String!) {
+    project: markdownRemark(id: { eq: $id }) {
       id
       html
+      fields {
+        slug
+        clients
+        type
+        youtubeLink
+        externalLink
+      }
       frontmatter {
-        date(formatString: "MMMM DD, YYYY")
         title
-        description
-        tags
+        featuredImage {
+          childImageSharp {
+            resize(width: 300) {
+              src
+            }
+          }
+        }
       }
     }
   }

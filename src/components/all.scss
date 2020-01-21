@@ -111,6 +111,8 @@ $black: #2b2523;
 footer.footer {
   padding: 3rem 0rem 0rem;
   background-color: transparent;
+
+  box-shadow: inset 0 5px 5px transparentize(#000, 0.8);
 }
 
 //Menu overrides
@@ -134,17 +136,23 @@ $menu-label-color: $white-ter;
 
 .social {
   padding: 2em;
-}
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+flex-direction: row;}
 
 .social a {
-  padding: 0.5em 0.5em 0.3em 0.5em;
   border-radius: 1em;
   background-color: $white-ter;
   margin: 0.5em;
-  width: 1em;
-  height: 1em;
+  width: 2em;
+  height: 2em;
   vertical-align: middle;
-  display: inline;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
 }
 
 // blog roll

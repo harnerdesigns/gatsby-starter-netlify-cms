@@ -43,8 +43,11 @@ const Meta = styled.div`
     text-align: center;
   }
 
+  h4{
+    font-weight: 900;
+  }
+
   h5{
-      font-family: "Roboto";
       font-size: 1rem;
 
 

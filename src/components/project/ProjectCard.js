@@ -32,6 +32,9 @@ const Meta = styled.div`
   h5 {
     margin: 0;
   }
+  h4{
+    font-weight: 900;
+  }
   h5{
     text-align: right;
   }
