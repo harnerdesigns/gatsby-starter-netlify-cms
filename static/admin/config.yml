@@ -54,7 +54,7 @@ collections:
       - { label: "Clients", name: "clients", widget: "list", required: false}
       - { label: "YouTube Link", name: "youtubeLink", widget: "string", required: false, hint: "Either YouTube Link OR External Link"}
       - { label: "External Link", name: "externalLink", widget: "string", required: false}
-      - { label: "Type", name: "type", widget: "string" default: "Project"}
+      - { label: "Type", name: "type", widget: "string", default: "Project"}
       - {label: Images, name: images, widget: list, required: false fields: [{label: Image, name: image, widget: image, required: false}, {label: Caption, name: caption, widget: text, required: false}]}
       - { label: "Project Description", name: "body", widget: "markdown", required: false}
 
