@@ -1,6 +1,6 @@
 ---
 templateKey: team-member
-name: Jack Harner
+name: Jack
 jobTitle: Developer
 featuredImage: /img/jack-harner.jpg
 ---
