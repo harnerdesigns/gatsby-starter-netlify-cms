@@ -1,7 +1,7 @@
 ---
 templateKey: team-member
 name: Jay Huffman
-jobTitle: Chief Executive Officer
+jobTitle: CEO
 featuredImage: /img/jay-huffman.jpg
 weight: 100
 ---
