@@ -1,6 +1,6 @@
 ---
 templateKey: project
-title: Anotherly
+title: Anotherly Newsletter
 featuredImage: /img/Anotherly.png
 type: Branding
 images:
