@@ -5,4 +5,4 @@ featuredImage: /img/The Printer's Devil.png
 youtubeLink: 'https://www.youtube.com/watch?v=-PCqCfMlymg&feature=emb_logo'
 type: Documentary
 ---
-CO-DIRECTED BY**COLLIN DUDDY**AND**MICHAEL WEYBRET**
+CO-DIRECTED BY**COLLIN DUDDY** + **MICHAEL WEYBRET**
