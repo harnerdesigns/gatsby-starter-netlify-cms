@@ -1,6 +1,6 @@
 ---
 templateKey: project
-title: Way Down South
+title: Way Down South Apparel
 featuredImage: /img/Way Down South.png
 externalLink: 'https://www.waydownsouthco.com/'
 type: Branding
