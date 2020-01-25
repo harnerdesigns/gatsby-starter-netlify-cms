@@ -1,8 +1,8 @@
 ---
 templateKey: project
-title: Midland | Mr. Lonely
-featuredImage: /img/Mr. Lonely.png
-youtubeLink: 'https://www.youtube.com/watch?v=T4bvrywf0xg'
+title: Corey Harper | Don't Hate Me
+featuredImage: /img/Don't Hate Me.png
+youtubeLink: 'https://www.youtube.com/watch?v=WP-QwNOjlCE'
 type: Music Video
 ---
-CO-DIRECTED BY **CAMERON DUDDY** AND **COLLIN DUDDY**
+CO-DIRECTED BY **COLLIN DUDDY** AND **MICHAEL WEYBRET**
