@@ -1,8 +1,8 @@
 ---
 templateKey: project
-title: The Printer's Devil
+title: The Printer's Devil Documentary
 featuredImage: /img/The Printer's Devil.png
 youtubeLink: 'https://www.youtube.com/watch?v=-PCqCfMlymg&feature=emb_logo'
-type: Documentary
+type: Trailer
 ---
 CO-DIRECTED BY**COLLIN DUDDY** + **MICHAEL WEYBRET**
