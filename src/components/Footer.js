@@ -6,69 +6,24 @@ import instagram from '../img/social/instagram.svg'
 import twitter from '../img/social/twitter.svg'
 import vimeo from '../img/social/vimeo.svg'
 
+
+import styled, { keyframes } from "styled-components"
+
+
 const Footer = class extends React.Component {
   render() {
     return (
       <footer className="footer has-background-black has-text-white-ter">
         <div className="content has-text-centered">
-      <h1 style={{color: "#fff"}}>Sweatshirt</h1>
+        <Link to="/" title="Logo">
+              <h1 style={{ margin: 0, color: "#fff", fontFamily: '"SeattleSans", sans-serif'}}>Sweatshirt Media</h1>
+            </Link>
+            <h5 style={{color: "#fff", fontWeight: "100"}}>&copy; 2020 Sweatshirt Media</h5>
         </div>
         <div className="content has-text-centered has-background-black has-text-white-ter">
           <div className="container has-background-black has-text-white-ter">
-            <div className="columns">
-              <div className="column is-4">
-                <section className="menu">
-                  <ul className="menu-list">
-                    <li>
-                      <Link to="/" className="navbar-item">
-                        Home
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/about">
-                        About
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/products">
-                        Products
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/contact/examples">
-                        Form Examples
-                      </Link>
-                    </li>
-                    <li>
-                      <a
-                        className="navbar-item"
-                        href="/admin/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        Admin
-                      </a>
-                    </li>
-                  </ul>
-                </section>
-              </div>
-              <div className="column is-4">
-                <section>
-                  <ul className="menu-list">
-                    <li>
-                      <Link className="navbar-item" to="/blog">
-                        Latest Stories
-                      </Link>
-                    </li>
-                    <li>
-                      <Link className="navbar-item" to="/contact">
-                        Contact
-                      </Link>
-                    </li>
-                  </ul>
-                </section>
-              </div>
-              <div className="column is-4 social">
+
+              <SocialIcons>
                 <a title="facebook" href="https://facebook.com">
                   <img
                     src={facebook}
@@ -98,9 +53,8 @@ const Footer = class extends React.Component {
                     style={{ width: '1em', height: '1em' }}
                   />
                 </a>
-              </div>
+              </SocialIcons>
             </div>
-          </div>
         </div>
       </footer>
     )
@@ -108,3 +62,36 @@ const Footer = class extends React.Component {
 }
 
 export default Footer
+
+
+const SocialIcons = styled.div`
+width: 100%;
+display: flex;
+align-items; center;
+justify-content: center;
+
+a{
+  width: 2rem;
+  height: 2rem;
+  margin: 3rem;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: rotate(45deg);
+  line-height: 1em;
+  border-radius: 3px;
+  img{
+    transform: rotate(-45deg);
+  }
+
+  &:hover{
+    background: var(--mainColor);
+
+    img{
+      filter:invert(1);
+    }
+  }
+}
+
+`
