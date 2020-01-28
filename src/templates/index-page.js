@@ -15,6 +15,7 @@ import Grid from "../components/layout/grid"
 import { breakpoints } from "../components/breakpoints"
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import SocialIcons from '../components/SocialIcons'
 
 
 export const IndexPageTemplate = ({
@@ -40,6 +41,7 @@ export const IndexPageTemplate = ({
 
 
           </BannerNav>
+          <SocialIcons />
         </div>
 
 
@@ -361,7 +363,7 @@ font-size: 3rem;
 position: relative;
 animation: ${bounce} 2s ease infinite, ${fadeIn} 1s ease 2s 1;
 animation-fill-mode: backwards;
-filter:drop-shadow( 0 2px 0 #fff) drop-shadow( 0 5px 1px #333) drop-shadow( 0 -3px 5px var(--mainColor));
+filter:drop-shadow( 0 2px 0 #fff) drop-shadow( 0 5px 0 #333);
 
 @media ${breakpoints.laptop} {
   font-size: 4rem;

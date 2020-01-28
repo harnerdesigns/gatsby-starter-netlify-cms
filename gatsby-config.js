@@ -31,6 +31,7 @@ module.exports = {
       },
     },
     'gatsby-plugin-sharp',
+    `gatsby-plugin-transition-link`,
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-transformer-remark',
