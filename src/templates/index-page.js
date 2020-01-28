@@ -28,7 +28,7 @@ export const IndexPageTemplate = ({
       <Container style={{
         padding: "1rem", minHeight: "100vh", backgroundImage: `url(${
           !!image.childImageSharp ? image.childImageSharp.fluid.src : image
-          })`, backgroundSize: "400px", backgroundPosition: "left center", backgroundAttachment: "fixed", alignItems: "center", justifyContent: "center"
+          })`, backgroundSize: "400px", backgroundPosition: "center", backgroundAttachment: "fixed", alignItems: "center", justifyContent: "center"
       }} >
         <div style={{ background: "#333", padding: "2em", marginTop: "auto" }}>
           <img src={logo} alt="Sweatshirt" style={{ width: '100%', height: 'auto' }} />
@@ -49,10 +49,10 @@ export const IndexPageTemplate = ({
       </Container>
 
       <Container>
-        <h1>We Are Makers. <Link to="/portfolio" style={{fontSize: "0.5em", verticalAlign: "middle", color: "inherit", fontWeight: 100}}>See Our Work &raquo;</Link></h1>
+        <h1>We Are Makers. <Link to="/portfolio" style={{fontSize: "0.5em", verticalAlign: "middle", color: "inherit", fontWeight: 100}}>See&nbsp;Our&nbsp;Work&nbsp;&raquo;</Link></h1>
         <Grid col={3}>
-          {projects.map(({ node: project }) => (
-            <ProjectCard project={project} />
+          {projects.map(({ node: project }, i) => (
+            <ProjectCard project={project} featured={i === 0}/>
           ))}
         </Grid>
 
@@ -167,7 +167,7 @@ export const pageQuery = graphql`
           
           featuredImage {
             childImageSharp {
-              resize(width: 800) {
+              resize(width: 1200) {
                 src
               }
             }
@@ -290,19 +290,37 @@ color: #fff;
     color: inherit;
     text-decoration: none;
     padding: 0.5em;
+    border-radius: 5px;
     border: 1px solid #fff;
     width: 100%;
     text-align: center;
     transition: 100ms;
+    margin-bottom: 1em;
     &:hover{
-      background: var(--mainColor);
+      background: rgba(255,255,255,0.2);
     }
+
+
+    @media ${breakpoints.laptop} {
+      
+      margin-bottom: 0;
+
+    }
+
 
     &:last-of-type{
       background: var(--mainColor);
       font-weight: 900;
-      border: 1px solid var(--mainColor);
+      border: 1px solid var(--darkerColor);
+      margin-bottom: 0;
+
+      &:hover{
+        background: var(--darkerColor);
+      }
     }
+    
+    
+
 }
 `
 
@@ -339,10 +357,11 @@ display: block;
 
 margin-top: auto;
 margin-bottom: 2rem;
-font-size: 2rem;
+font-size: 3rem;
 position: relative;
 animation: ${bounce} 2s ease infinite, ${fadeIn} 1s ease 2s 1;
 animation-fill-mode: backwards;
+filter:drop-shadow( 0 2px 0 #fff) drop-shadow( 0 5px 1px #333) drop-shadow( 0 -3px 5px var(--mainColor));
 
 @media ${breakpoints.laptop} {
   font-size: 4rem;

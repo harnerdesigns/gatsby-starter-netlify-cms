@@ -43,10 +43,11 @@ const Meta = styled.div`
   }
 `
 
-const ProjectCard = ({ project }) => (
+const ProjectCard = ({ project, style, featured }) => (
   <Link
     to={project.fields.slug}
-    style={{ textDecoration: `none`, color: "#212121" }}
+    style={{ textDecoration: `none`, color: "#212121", ...style }}
+    className = { featured ? "featured" : ""}
   >
     <Card>
       <img src={project.frontmatter.featuredImage.childImageSharp.resize.src} />
