@@ -10,6 +10,8 @@ import Img from 'gatsby-image'
 
 import { breakpoints } from "../components/breakpoints"
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 const VideoGrid = styled.div`
   display: grid; 
@@ -125,6 +127,11 @@ const SingleProject = props => {
             {project.fields.type}{" "}
             {project.fields.clients.length ? "for " + project.fields.clients : ""}
           </h2>
+          {project.fields.externalLink && <a href={project.fields.externalLink} className="button" target="_blank" rel="noreferer" style={{width: "100%", margin: "1em auto", background: "var(--mainColor)", color: "#fff", fontWeight: 900}}>View Project&nbsp;<FontAwesomeIcon icon="external-link-alt"/></a>}
+
+          {project.fields.youtubeLink && <a href={project.fields.youtubeLink} className="button" target="_blank" rel="noreferer" style={{width: "100%", margin: "1em auto", background: "#f44336", color: "#fff", fontWeight: 900}}>Watch on YouTube&nbsp;<FontAwesomeIcon icon={["fab", "youtube"]}/></a>}
+
+          
           <div dangerouslySetInnerHTML={{ __html: project.html }} />
         </ProjectContent>
       </VideoGrid>
