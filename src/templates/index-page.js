@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
-import  styled, {keyframes} from "styled-components"
+import styled, { keyframes } from "styled-components"
 
 import logo from '../img/logo.svg'
 
@@ -28,27 +28,28 @@ export const IndexPageTemplate = ({
       <Container style={{
         padding: "1rem", minHeight: "100vh", backgroundImage: `url(${
           !!image.childImageSharp ? image.childImageSharp.fluid.src : image
-          })`, backgroundSize: "cover", backgroundPosition: "left center", backgroundAttachment: "fixed", alignItems: "center", justifyContent: "center"
+          })`, backgroundSize: "400px", backgroundPosition: "left center", backgroundAttachment: "fixed", alignItems: "center", justifyContent: "center"
       }} >
-        <div style={{ background: "#333", padding: "2em", width: "50vw", marginTop: "auto" }}>
+        <div style={{ background: "#333", padding: "2em", marginTop: "auto" }}>
           <img src={logo} alt="Sweatshirt" style={{ width: '100%', height: 'auto' }} />
+          <BannerNav>
+
+            <Link to="/portfolio">See Our Work</Link>
+            <Link to="/contact">Get In Touch &raquo;</Link> 
+
+
+
+          </BannerNav>
         </div>
 
-        <BannerNav>
-
-          <Link to="/portfolio">See Our Work</Link>
 
 
-
-        </BannerNav>
-
-
-        <ScrollIndicator><FontAwesomeIcon icon='caret-down'/> </ScrollIndicator>
+        <ScrollIndicator><FontAwesomeIcon icon='caret-down' /> </ScrollIndicator>
 
       </Container>
 
       <Container>
-        <h1>We Are Makers.</h1>
+        <h1>We Are Makers. <Link to="/portfolio" style={{fontSize: "0.5em", verticalAlign: "middle", color: "inherit", fontWeight: 100}}>See Our Work &raquo;</Link></h1>
         <Grid col={3}>
           {projects.map(({ node: project }) => (
             <ProjectCard project={project} />
@@ -211,7 +212,7 @@ h4{
 }
 
 &:hover{
-  background: #9C27B0;
+  background: var(--mainColor);
   color: #fff;
 }
 `
@@ -268,41 +269,65 @@ button[type=submit]{
 const BannerNav = styled.nav`
 
 background: #333; 
-width: 50vw;
+width: 100%;
 display: flex;
 align-items: center;
 justify-content: center;
-
+flex-direction: column;
+margin-top: 1rem;
 color: #fff;
 
-a{ 
+    @media ${breakpoints.laptop} {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 1rem;
 
-  color: inherit;
-  text-decoration: none;
-  padding: 0.5em;
-  margin: 1em;
-  border: 1px solid #fff;
-  width: 50%;
-  text-align: center;
-  transition: 100ms;
-  &:hover{
-    background: rgba(255,255,255,0.2);
-  }
+      width: 50vw;
+
+    }
+
+  a{ 
+    color: inherit;
+    text-decoration: none;
+    padding: 0.5em;
+    border: 1px solid #fff;
+    width: 100%;
+    text-align: center;
+    transition: 100ms;
+    &:hover{
+      background: var(--mainColor);
+    }
+
+    &:last-of-type{
+      background: var(--mainColor);
+      font-weight: 900;
+      border: 1px solid var(--mainColor);
+    }
 }
 `
 
 
 const bounce = keyframes`
   0% {
-    bottom: 2rem;
+    bottom: 0;
   }
 
   50%{
-    bottom: 5rem;
+    bottom: 1rem;
   }
 
   100% {
-    bottom: 2rem;
+    bottom: 0;
+  }
+`
+
+const fadeIn = keyframes`
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 100%;
   }
 `
 
@@ -314,9 +339,14 @@ display: block;
 
 margin-top: auto;
 margin-bottom: 2rem;
-font-size: 4rem;
-animation: ${bounce} 2s linear infinite;
+font-size: 2rem;
+position: relative;
+animation: ${bounce} 2s ease infinite, ${fadeIn} 1s ease 2s 1;
+animation-fill-mode: backwards;
 
+@media ${breakpoints.laptop} {
+  font-size: 4rem;
+}
 
 
 `
