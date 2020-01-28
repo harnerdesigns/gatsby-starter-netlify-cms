@@ -48,7 +48,13 @@ collections:
       - { label: "Name", name: "name", widget: "string" }
       - { label: "Job Title", name: "jobTitle", widget: "string" }
       - { label: "Headshot", name: "featuredImage", widget: image }
-      - { label: "Weight", name: "weight", widget: "number", required: false }
+      - {
+          label: "Weight",
+          name: "weight",
+          widget: "number",
+          required: false,
+          hint: "Controls the Order. Higher Numbers Show Up First",
+        }
       - { label: "Body", name: "body", widget: "markdown", required: false }
   - name: "portfolio"
     label: "Portfolio"
@@ -68,6 +74,13 @@ collections:
       - { label: "Featured Image", name: "featuredImage", widget: "image" }
       - { label: "Clients", name: "clients", widget: "list", required: false }
       - {
+          label: "Weight",
+          name: "weight",
+          widget: "number",
+          required: false,
+          hint: "Controls the Order. Higher Numbers Show Up First",
+        }
+      - {
           label: "YouTube Link",
           name: "youtubeLink",
           widget: "string",
@@ -79,6 +92,7 @@ collections:
           name: "externalLink",
           widget: "string",
           required: false,
+          hint: "Either YouTube Link OR External Link",
         }
       - { label: "Type", name: "type", widget: "string", default: "Project" }
       - {
