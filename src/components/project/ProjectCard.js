@@ -5,6 +5,9 @@ import styled from "styled-components"
 
 import React from "react"
 
+import AniLink from "gatsby-plugin-transition-link/AniLink"
+
+
 const Card = styled.div`
   background: #fff;
   // padding: 0.5em;
@@ -44,7 +47,7 @@ const Meta = styled.div`
 `
 
 const ProjectCard = ({ project, style, featured }) => (
-  <Link
+  <AniLink cover direction="down" bg={"url("+project.frontmatter.featuredImage.childImageSharp.resize.src + ") center / cover"}
     to={project.fields.slug}
     style={{ textDecoration: `none`, color: "#212121", ...style }}
     className = { featured ? "featured" : ""}
@@ -59,7 +62,7 @@ const ProjectCard = ({ project, style, featured }) => (
         </h5>
       </Meta>
     </Card>
-  </Link>
+  </AniLink>
 )
 
 ProjectCard.propTypes = {
