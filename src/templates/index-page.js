@@ -1,18 +1,20 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
-import Img from 'gatsby-image'
-import styled from "styled-components"
+import  styled, {keyframes} from "styled-components"
+
+import logo from '../img/logo.svg'
 
 
 import Layout from '../components/Layout'
-import BlogRoll from '../components/BlogRoll'
 import TeamCard from "../components/team/TeamCard"
 import ProjectCard from "../components/project/ProjectCard"
 
 import Grid from "../components/layout/grid"
 
 import { breakpoints } from "../components/breakpoints"
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 export const IndexPageTemplate = ({
@@ -24,10 +26,25 @@ export const IndexPageTemplate = ({
     <div>
 
       <Container style={{
-        padding: "1rem", minHeight: "80vh", backgroundImage: `url(${
+        padding: "1rem", minHeight: "100vh", backgroundImage: `url(${
           !!image.childImageSharp ? image.childImageSharp.fluid.src : image
-          })`, backgroundSize: "cover", backgroundPosition: "left center", backgroundAttachment: "fixed", alignItems: "flex-end", justifyContent: "flex-end" }} >
-        <h1 style={{fontSize: "8em", margin: 0, padding: "0.5rem", textAlign: "right", background: "#333", color: "#fff", boxShadow: "inset 0 2px 5px rgba(0,0,0,0.5)", lineHeight: 1}}>Sweatshirt</h1>
+          })`, backgroundSize: "cover", backgroundPosition: "left center", backgroundAttachment: "fixed", alignItems: "center", justifyContent: "center"
+      }} >
+        <div style={{ background: "#333", padding: "2em", width: "50vw", marginTop: "auto" }}>
+          <img src={logo} alt="Sweatshirt" style={{ width: '100%', height: 'auto' }} />
+        </div>
+
+        <BannerNav>
+
+          <Link to="/portfolio">See Our Work</Link>
+
+
+
+        </BannerNav>
+
+
+        <ScrollIndicator><FontAwesomeIcon icon='caret-down'/> </ScrollIndicator>
+
       </Container>
 
       <Container>
@@ -44,7 +61,8 @@ export const IndexPageTemplate = ({
       <Container style={{
         minHeight: '60vh', backgroundImage: `url(${
           !!storyTeller.childImageSharp ? storyTeller.childImageSharp.fluid.src : storyTeller
-          })`, backgroundSize: "cover", backgroundPosition: "center center", backgroundAttachment: "fixed" }}>
+          })`, backgroundSize: "cover", backgroundPosition: "center center", backgroundAttachment: "fixed"
+      }}>
         <h1 style={{ color: "#fff", margin: "2em 0" }}>We Are Storytellers.</h1>
         <Grid col={3} style={{ background: "transparent", width: "80%" }}>
           <SkillsCard>
@@ -57,7 +75,7 @@ export const IndexPageTemplate = ({
             <h4>Social Strategy</h4>
           </SkillsCard>
         </Grid>
-      
+
       </Container>
 
 
@@ -77,7 +95,7 @@ const IndexPage = ({ data }) => {
   const { team, projects, storyTeller } = data
 
   return (
-    <Layout>
+    <Layout noHeader>
       <IndexPageTemplate
         image={frontmatter.image}
         team={team.edges}
@@ -110,27 +128,7 @@ export const pageQuery = graphql`
           }
         }
       }
-      heading
-      subheading
-      mainpitch {
-        title
-        description
-      }
-      description
-      intro {
-        blurbs {
-          image {
-            childImageSharp {
-              fluid(maxWidth: 240, quality: 64) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-          text
-        }
-        heading
-        description
-      }
+      portfolioHeader
     }
   }
   storyTeller: file(relativePath: {eq: "storytellers.jpg"}) {
@@ -262,5 +260,63 @@ button[type=submit]{
   background: transparent; 
   padding: 0.5em;
 }
+
+`
+
+
+
+const BannerNav = styled.nav`
+
+background: #333; 
+width: 50vw;
+display: flex;
+align-items: center;
+justify-content: center;
+
+color: #fff;
+
+a{ 
+
+  color: inherit;
+  text-decoration: none;
+  padding: 0.5em;
+  margin: 1em;
+  border: 1px solid #fff;
+  width: 50%;
+  text-align: center;
+  transition: 100ms;
+  &:hover{
+    background: rgba(255,255,255,0.2);
+  }
+}
+`
+
+
+const bounce = keyframes`
+  0% {
+    bottom: 2rem;
+  }
+
+  50%{
+    bottom: 5rem;
+  }
+
+  100% {
+    bottom: 2rem;
+  }
+`
+
+
+const ScrollIndicator = styled.div`
+
+
+display: block;
+
+margin-top: auto;
+margin-bottom: 2rem;
+font-size: 4rem;
+animation: ${bounce} 2s linear infinite;
+
+
 
 `

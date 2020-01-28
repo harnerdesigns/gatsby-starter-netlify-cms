@@ -1,7 +1,7 @@
 ---
 templateKey: team-member
-name: Collin Duddy
-jobTitle: CCO (Chief Creative Officer)
+name: Collin
+jobTitle: CCO
 featuredImage: /img/collin-duddy.jpg
 weight: 99
 ---
