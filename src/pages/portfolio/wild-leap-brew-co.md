@@ -2,6 +2,7 @@
 templateKey: project
 title: Wild Leap Brew Co.
 featuredImage: /img/Wild Leap Brew Co.png
+weight: 2
 externalLink: 'https://www.wildleap.com/'
 type: Branding
 images: []
