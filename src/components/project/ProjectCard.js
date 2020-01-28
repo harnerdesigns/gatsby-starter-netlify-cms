@@ -10,13 +10,15 @@ const Card = styled.div`
   // padding: 0.5em;
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-direction: row;
+  justify-content: stretch;
+  flex-direction: column;
   min-width: 100%;
   border-bottom: 10px solid #000;
+  height: 100%;
   img {
     width: 100%;
     height: auto;
+    margin-bottom: auto;
   }
 `
 
@@ -24,8 +26,8 @@ const Meta = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 0.5em 0;
-  padding: 0 1em;
+  margin: 0 0 auto;
+  padding: 0.5em 1em;
   width: 100%;
 
   h4,
@@ -34,6 +36,7 @@ const Meta = styled.div`
   }
   h4{
     font-weight: 900;
+    margin-right: 1em;
   }
   h5{
     text-align: right;
@@ -41,11 +44,11 @@ const Meta = styled.div`
 `
 
 const ProjectCard = ({ project }) => (
-  <Card>
-    <Link
-      to={project.fields.slug}
-      style={{ textDecoration: `none`, color: "#212121" }}
-    >
+  <Link
+    to={project.fields.slug}
+    style={{ textDecoration: `none`, color: "#212121" }}
+  >
+    <Card>
       <img src={project.frontmatter.featuredImage.childImageSharp.resize.src} />
       <Meta>
         <h4>{project.frontmatter.title}</h4>
@@ -54,8 +57,8 @@ const ProjectCard = ({ project }) => (
           {project.fields.clients.length ? "for " + project.fields.clients : ""}
         </h5>
       </Meta>
-    </Link>
-  </Card>
+    </Card>
+  </Link>
 )
 
 ProjectCard.propTypes = {

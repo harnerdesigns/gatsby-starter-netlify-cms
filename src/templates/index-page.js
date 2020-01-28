@@ -158,7 +158,7 @@ export const pageQuery = graphql`
       }
     }
   }
-  projects: allMarkdownRemark(filter: {frontmatter: {templateKey: {eq: "project"}}}, limit: 6) {
+  projects: allMarkdownRemark(filter: {frontmatter: {templateKey: {eq: "project"}}}, limit: 6, sort: {fields: fields___weight, order: DESC}) {
     edges {
       node {
         frontmatter {

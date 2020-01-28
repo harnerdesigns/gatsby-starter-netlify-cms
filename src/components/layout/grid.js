@@ -10,7 +10,7 @@ const StyledGrid = styled.div`
   width: 100%;
   grid-template-columns: repeat(${props => (props.col ? props.col/2 : 2)}, 1fr);
   grid-gap: 1em;
-  align-items: flex-start;
+  align-items: stretch;
 
   @media ${breakpoints.laptop} {
     grid-template-columns: repeat(${props => (props.col ? props.col : 5)}, 1fr);
