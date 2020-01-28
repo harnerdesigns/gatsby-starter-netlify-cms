@@ -17,7 +17,8 @@ import { breakpoints } from "../components/breakpoints"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import SocialIcons from '../components/SocialIcons'
 
-import BannerVideo from "../img/videobanner.mp4"
+import BannerVideoMP4 from "../img/videobanner.mp4"
+import BannerVideoWEBM from "../img/videobanner.webm"
 
 
 export const IndexPageTemplate = ({
@@ -48,7 +49,8 @@ export const IndexPageTemplate = ({
         </div>
 
         <video loop muted autoPlay poster={image.childImageSharp.fluid.src} style={{position: "absolute", filter:"grayscale(1)", top: 0, left:0, right: 0, bottom: 0, width: "auto", height: "100%"}}>
-          <source src={BannerVideo} type="video/mp4" />
+          <source src={BannerVideoWEBM} type="video/webm" />
+          <source src={BannerVideoMP4} type="video/mp4" />
         </video>
 
       </Container>
