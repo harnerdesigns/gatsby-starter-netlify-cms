@@ -4,7 +4,7 @@ title: Desure | Kick Rocks
 featuredImage: /img/Kick Rocks.png
 clients:
   - Desure
-youtubeLink: 'https://www.youtube.com/watch?v=g469DxOxZjo'
+youtubeLink: 'https://www.youtube.com/watch?v=FXVeQQmINJ4'
 type: Music Video
 ---
 DIRECTED BY **COLLIN DUDDY**
