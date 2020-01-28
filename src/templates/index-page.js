@@ -47,7 +47,7 @@ export const IndexPageTemplate = ({
           <SocialIcons />
         </div>
 
-        <video loop muted autoPlay cover={image.childImageSharp.fluid.src} style={{position: "absolute", filter:"grayscale(1)", top: 0, left:0, right: 0, bottom: 0, width: "auto", height: "100%"}}>
+        <video loop muted autoPlay poster={image.childImageSharp.fluid.src} style={{position: "absolute", filter:"grayscale(1)", top: 0, left:0, right: 0, bottom: 0, width: "auto", height: "100%"}}>
           <source src={BannerVideo} type="video/mp4" />
         </video>
 
