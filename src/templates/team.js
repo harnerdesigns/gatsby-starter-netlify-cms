@@ -8,6 +8,9 @@ import Grid from '../components/layout/grid'
 import Content, { HTMLContent } from '../components/Content'
 import TeamCard from '../components/team/TeamCard'
 
+import { breakpoints } from "../components/breakpoints"
+
+
 
 export const TeamPageTemplate = ({ title, content, contentComponent, team }) => {
   const PageContent = contentComponent || Content
@@ -94,7 +97,7 @@ export const teamPageQuery = graphql`
 
 
 const Container = styled.section`
-  width: 70%;
+  width: 95%;
   min-height: 20vh;
   display: flex;
   flex-direction: column;
@@ -103,6 +106,12 @@ const Container = styled.section`
   position:relative;
   padding: 5vh 1vh;
   margin: 0 auto;
+
+      @media ${breakpoints.laptop} {
+  width: 70%;
+
+
+      }
 
   & > h1{
     text-align: center;
