@@ -12,15 +12,15 @@ const SocialIcons = () => {
 
 
     <SocialIconsGrid>
-      <a title="twitter" href="https://twitter.com">
+      <a title="twitter" href="https://twitter.com/mediasweatshirt">
         <FontAwesomeIcon icon={['fab', 'twitter']} />
       </a>
 
-      <a title="instagram" href="https://instagram.com">
+      <a title="instagram" href="https://www.instagram.com/mediasweatshirt/">
         <FontAwesomeIcon icon={['fab', 'instagram']} />
       </a>
 
-      <a title="email" href="https://email.com">
+      <a title="email" href="mailto:Hello@sweatshirtmedia.com">
         <FontAwesomeIcon icon='envelope' />
       </a>
 
@@ -39,30 +39,26 @@ align-items; center;
 justify-content: center;
 
 a{
-  width: 2rem;
-  height: 2rem;
-  margin: 1.5rem 3rem 0;
-  background: rgba(255,255,255,0.8);
-  border: 1px solid #fff;
+  padding: 1em;
+  margin: 1em;
   display: flex;
   align-items: center;
   justify-content: center;
-  transform: rotate(45deg);
-  border-radius: 3px;
+
+
   transition: 100ms;
   svg{
     transition: 100ms;
 
-    transform: rotate(-45deg);
-    color: var(--mainColor);
+    color: #fff;
+    max-width: 2rem;
 
   }
 
   &:hover{
-    background: var(--mainColor);
 
     svg{
-      color: #fff;
+      color: var(--mainColor);
     }
   }
 }

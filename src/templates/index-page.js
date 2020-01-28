@@ -29,9 +29,9 @@ export const IndexPageTemplate = ({
       <Container style={{
         padding: "1rem", minHeight: "100vh", backgroundImage: `url(${
           !!image.childImageSharp ? image.childImageSharp.fluid.src : image
-          })`, backgroundSize: "400px", backgroundPosition: "center", backgroundAttachment: "fixed", alignItems: "center", justifyContent: "center"
+          })`, backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed", alignItems: "center", justifyContent: "center"
       }} >
-        <div style={{ background: "#333", padding: "2em", marginTop: "auto" }}>
+        <div>
           <img src={logo} alt="Sweatshirt" style={{ width: '100%', height: 'auto' }} />
           <BannerNav>
 
@@ -44,17 +44,14 @@ export const IndexPageTemplate = ({
           <SocialIcons />
         </div>
 
-
-
-        <ScrollIndicator><FontAwesomeIcon icon='caret-down' /> </ScrollIndicator>
-
       </Container>
 
       <Container>
         <h1>We Are Makers. <Link to="/portfolio" style={{fontSize: "0.5em", verticalAlign: "middle", color: "inherit", fontWeight: 100}}>See&nbsp;Our&nbsp;Work&nbsp;&raquo;</Link></h1>
         <Grid col={3}>
           {projects.map(({ node: project }, i) => (
-            <ProjectCard project={project} featured={i === 0}/>
+            <ProjectCard project={project} />
+            // <ProjectCard project={project} featured={i === 0}/>
           ))}
         </Grid>
 
@@ -144,6 +141,7 @@ export const pageQuery = graphql`
   team: allMarkdownRemark(filter: {frontmatter: {templateKey: {eq: "team-member"}}}, limit: 6, sort: {fields: fields___weight, order: DESC}) {
     edges {
       node {
+        id
         frontmatter {
           name
           jobTitle
@@ -156,6 +154,7 @@ export const pageQuery = graphql`
           }
         }
         fields {
+          teamID
           slug
         }
       }
@@ -270,13 +269,12 @@ button[type=submit]{
 
 const BannerNav = styled.nav`
 
-background: #333; 
 width: 100%;
 display: flex;
 align-items: center;
 justify-content: center;
 flex-direction: column;
-margin-top: 1rem;
+margin: 2rem 0;
 color: #fff;
 
     @media ${breakpoints.laptop} {
@@ -327,47 +325,4 @@ color: #fff;
 `
 
 
-const bounce = keyframes`
-  0% {
-    bottom: 0;
-  }
 
-  50%{
-    bottom: 1rem;
-  }
-
-  100% {
-    bottom: 0;
-  }
-`
-
-const fadeIn = keyframes`
-  0% {
-    opacity: 0;
-  }
-
-  100% {
-    opacity: 100%;
-  }
-`
-
-
-const ScrollIndicator = styled.div`
-
-
-display: block;
-
-margin-top: auto;
-margin-bottom: 2rem;
-font-size: 3rem;
-position: relative;
-animation: ${bounce} 2s ease infinite, ${fadeIn} 1s ease 2s 1;
-animation-fill-mode: backwards;
-filter:drop-shadow( 0 2px 0 #fff) drop-shadow( 0 5px 0 #333);
-
-@media ${breakpoints.laptop} {
-  font-size: 4rem;
-}
-
-
-`

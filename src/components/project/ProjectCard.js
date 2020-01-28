@@ -28,22 +28,18 @@ const Card = styled.div`
 const Meta = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   margin: 0 0 auto;
-  padding: 0.5em 1em;
+  padding: 0.5em 0;
   width: 100%;
 
-  h4,
-  h5 {
+  h5
+  {
     margin: 0;
+    text-align: center;
+    font-weight: 100;
   }
-  h4{
-    font-weight: 900;
-    margin-right: 1em;
-  }
-  h5{
-    text-align: right;
-  }
+
 `
 
 const ProjectCard = ({ project, style, featured }) => (
@@ -55,11 +51,7 @@ const ProjectCard = ({ project, style, featured }) => (
     <Card>
       <img src={project.frontmatter.featuredImage.childImageSharp.resize.src} />
       <Meta>
-        <h4>{project.frontmatter.title}</h4>
-        <h5>
-          {project.fields.type}{" "}
-          {project.fields.clients.length ? "for " + project.fields.clients : ""}
-        </h5>
+        <h5>{project.frontmatter.title}</h5>
       </Meta>
     </Card>
   </AniLink>

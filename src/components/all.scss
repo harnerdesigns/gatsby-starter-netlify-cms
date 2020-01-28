@@ -1,4 +1,5 @@
 @import "~bulma/sass/utilities/initial-variables";
+@import "node_modules/@fortawesome/fontawesome-svg-core/styles";
 
 // Config vars
 // Kaldi logo brand color: #FD461E
@@ -19,7 +20,7 @@ $darkerColor: darken($mainColor, 10);
   --darkerColor: #7B1FA2;
 }
 
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,400i,900&display=swap');
 @font-face {
   font-family: "SeattleSans";
   src: url("../fonts/SeattleSans.eot"); /* IE9 Compat Modes */
@@ -208,7 +209,7 @@ body {
   line-height: 1.65;
   color: #333;
   margin: 0;
-  font-family: "Raleway";
+  font-family: "Montserrat", sans-serif;
 
 }
 

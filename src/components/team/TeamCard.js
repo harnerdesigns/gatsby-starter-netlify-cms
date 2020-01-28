@@ -21,7 +21,33 @@ const Card = styled.div`
     height: auto;
   }
 
+
+  a.full{
+
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-gap: 2rem;
+    font-size: 2rem;
+    align-items: center;
+  }
+
+  a.flipped{ grid-template-columns: 2fr 1fr;
+      grid-auto-flow: dense;
+
   
+    img{
+      grid-column: 2;
+    }
+  }
+
+  
+`
+
+const Bio = styled.div`
+width: 70%;
+margin: 0 auto;
+p{font-size: 1rem;}
+
 `
 
 const Meta = styled.div`
@@ -48,9 +74,8 @@ const Meta = styled.div`
   }
 
   h5{
-      font-size: 1rem;
-
-
+    font-size: 1rem;
+    margin-bottom: 1em;
   }
 
     @media ${breakpoints.laptop} {
@@ -61,19 +86,38 @@ const Meta = styled.div`
       text-align: right;
     }
   }
+
+  &.full{
+
+    grid-template-columns: 1fr;
+    align-items: center;
+
+    h4,h5{
+      text-align: center;
+
+      &.quote{
+        font-size: 1em;
+        font-style: italic;
+      }
+    }
+  }
   
 `
 
-const TeamCard = ({ person }) => (
-  <Card>
+const TeamCard = ({ person, full, flipped }) => (
+  <Card id={person.fields.teamID}>
     <Link
-      to={person.fields.slug}
+      to={"/team#" + person.fields.teamID}
       style={{ textDecoration: `none`, color: "#212121" }}
+      className={(full ? "full" : "") + " " +  (flipped ? "flipped" : "")}
     >
       <img src={person.frontmatter.featuredImage.childImageSharp.resize.src} />
-      <Meta>
+      <Meta className={(full ? "full" : "")}>
         <h4>{person.frontmatter.name}</h4>
         <h5>{person.frontmatter.jobTitle}</h5>
+        {full && person.fields.quote ? <h5 className="quote">"{person.fields.quote}"</h5> : ""}
+        {full && person.html ? <Bio dangerouslySetInnerHTML={{ __html: person.html}} /> : ""}
+
       </Meta>
     </Link>
   </Card>
@@ -81,10 +125,12 @@ const TeamCard = ({ person }) => (
 
 TeamCard.propTypes = {
   person: PropTypes.object,
+  full: PropTypes.bool,
 }
 
 TeamCard.defaultProps = {
   person: ``,
+  full: false
 }
 
 export default TeamCard

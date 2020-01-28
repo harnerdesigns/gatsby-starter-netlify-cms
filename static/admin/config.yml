@@ -10,6 +10,8 @@ backend:
 
 media_folder: static/img
 public_folder: /img
+display_url: https://sweatshirt.netlify.com
+site_url: https://sweatshirt.netlify.com
 
 collections:
   - name: "blog"
@@ -55,6 +57,7 @@ collections:
           required: false,
           hint: "Controls the Order. Higher Numbers Show Up First",
         }
+      - { label: "Yearbook Quote", name: "quote", widget: "string", required: false,  hint: "Something Short and Witty. Without the Quotes", }
       - { label: "Body", name: "body", widget: "markdown", required: false }
   - name: "portfolio"
     label: "Portfolio"
@@ -79,6 +82,7 @@ collections:
           widget: "number",
           required: false,
           hint: "Controls the Order. Higher Numbers Show Up First",
+          default: 0
         }
       - {
           label: "YouTube Link",

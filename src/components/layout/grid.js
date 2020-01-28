@@ -9,7 +9,7 @@ const StyledGrid = styled.div`
   display: grid;
   width: 100%;
   grid-template-columns: repeat(${props => (props.col ? props.col/2 : 2)}, 1fr);
-  grid-gap: 1em;
+  grid-gap: 2rem;
   align-items: stretch;
   grid-auto-flow: dense;
 

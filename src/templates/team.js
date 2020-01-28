@@ -6,10 +6,10 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Grid from '../components/layout/grid'
 import Content, { HTMLContent } from '../components/Content'
-import ProjectCard from '../components/project/ProjectCard'
+import TeamCard from '../components/team/TeamCard'
 
 
-export const PortfolioPageTemplate = ({ title, content, contentComponent, projects }) => {
+export const TeamPageTemplate = ({ title, content, contentComponent, team }) => {
   const PageContent = contentComponent || Content
 
   return (
@@ -19,57 +19,58 @@ export const PortfolioPageTemplate = ({ title, content, contentComponent, projec
       </h2>
       <PageContent className="content" content={content} />
 
-      <Grid col={3} >
-        {projects.map(({ node: project }, i) => (
-          <ProjectCard project={project} featured={i === 0 || i % 4 === 0} />
+      <Grid col={1} >
+        {team.map(({ node: member }, i) => (
+          <TeamCard person={member} full flipped={i % 2 === 0} />
         ))}
       </Grid>
     </Container>
   )
 }
 
-PortfolioPageTemplate.propTypes = {
+TeamPageTemplate.propTypes = {
   title: PropTypes.string.isRequired,
   content: PropTypes.string,
   contentComponent: PropTypes.func,
 }
 
-const PortfolioPage = ({ data }) => {
+const TeamPage = ({ data }) => {
   const { page: post } = data
-  const { edges } = data.projects
+  const { edges } = data.team
 
   return (
     <Layout>
-      <PortfolioPageTemplate
+      <TeamPageTemplate
         contentComponent={HTMLContent}
         title={post.frontmatter.title}
         content={post.html}
-        projects={edges}
+        team={edges}
       />
     </Layout>
   )
 }
 
-PortfolioPage.propTypes = {
+TeamPage.propTypes = {
   data: PropTypes.object.isRequired,
 }
 
-export default PortfolioPage
+export default TeamPage
 
-export const portfolioPageQuery = graphql`
-  query PortfolioPage($id: String!) {
+export const teamPageQuery = graphql`
+  query TeamPage($id: String!) {
     page: markdownRemark(id: { eq: $id }) {
       html
       frontmatter {
         title
       }
     }
-    projects: allMarkdownRemark(filter: {frontmatter: {templateKey: {eq: "project"}}}, limit: 1000) {
+    team: allMarkdownRemark(filter: {frontmatter: {templateKey: {eq: "team-member"}}}, limit: 1000, sort: {fields: fields___weight, order: DESC}) {
       edges {
         node {
+          html
           frontmatter {
-            title
-            
+            name
+            jobTitle
             featuredImage {
               childImageSharp {
                 resize(width: 1200) {
@@ -79,9 +80,9 @@ export const portfolioPageQuery = graphql`
             }
           }
           fields {
-            type
             slug
-            clients
+            teamID
+            quote
           }
 
         }
@@ -93,7 +94,7 @@ export const portfolioPageQuery = graphql`
 
 
 const Container = styled.section`
-  width: 100%;
+  width: 70%;
   min-height: 20vh;
   display: flex;
   flex-direction: column;
@@ -101,6 +102,7 @@ const Container = styled.section`
   justify-content: center;
   position:relative;
   padding: 5vh 1vh;
+  margin: 0 auto;
 
   & > h1{
     text-align: center;

@@ -1,7 +1,7 @@
 ---
 templateKey: index-page
 title: Sweatshirt Media
-image: /img/sweatshirt-banner.png
+image: /img/landing-page-banner.jpg
 portfolioHeader: We Are Makers.
 services:
   description: >-
