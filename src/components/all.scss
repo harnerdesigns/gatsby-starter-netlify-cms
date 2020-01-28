@@ -10,6 +10,11 @@ $primary-invert: $kaldi-red-invert;
 $body-color: #333;
 $black: #2b2523;
 
+:root{
+
+  --mainColor: #9C27B0;
+}
+
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,900&display=swap');
 @font-face {
   font-family: "SeattleSans";
