@@ -17,6 +17,8 @@ import { breakpoints } from "../components/breakpoints"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import SocialIcons from '../components/SocialIcons'
 
+import BannerVideo from "../img/videobanner.mp4"
+
 
 export const IndexPageTemplate = ({
   image,
@@ -31,7 +33,8 @@ export const IndexPageTemplate = ({
           !!image.childImageSharp ? image.childImageSharp.fluid.src : image
           })`, backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed", alignItems: "center", justifyContent: "center"
       }} >
-        <div>
+
+        <div style={{zIndex: 999}}>
           <img src={logo} alt="Sweatshirt" style={{ width: '100%', height: 'auto' }} />
           <BannerNav>
 
@@ -43,6 +46,10 @@ export const IndexPageTemplate = ({
           </BannerNav>
           <SocialIcons />
         </div>
+
+        <video loop muted autoPlay cover={image.childImageSharp.fluid.src} style={{position: "absolute", filter:"grayscale(1)", top: 0, left:0, right: 0, bottom: 0, width: "auto", height: "100%"}}>
+          <source src={BannerVideo} type="video/mp4" />
+        </video>
 
       </Container>
 
