@@ -109,7 +109,7 @@ const SingleProject = props => {
           </VideoWrapper> : ""}
 
           {project.frontmatter.featuredImage ?
-            <div style={{width: "100%", height: "100%", display: "block"}}><img src={project.frontmatter.featuredImage.childImageSharp.fixed.src} /></div>
+            <div style={{width: "100%", height: "100%", display: "block"}}><img src={project.frontmatter.featuredImage.childImageSharp.resize.src} /></div>
             : ""}
 
           {project.frontmatter.images ?
@@ -166,7 +166,7 @@ export const postQuery = graphql`
         }
         featuredImage {
           childImageSharp {
-            fixed(width: 1200) {
+            resize(width: 1200) {
               src
             }
           }
