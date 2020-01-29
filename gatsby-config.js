@@ -33,6 +33,7 @@ module.exports = {
     'gatsby-plugin-sharp',
     `gatsby-plugin-transition-link`,
     'gatsby-transformer-sharp',
+    'gatsby-plugin-styled-components',
     {
       resolve: 'gatsby-transformer-remark',
       options: {
