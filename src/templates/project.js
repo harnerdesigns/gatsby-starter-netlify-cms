@@ -127,9 +127,9 @@ const SingleProject = props => {
             {project.fields.type}{" "}
             {project.fields.clients.length ? "for " + project.fields.clients : ""}
           </h2>
-          {project.fields.externalLink && <a href={project.fields.externalLink} className="button" target="_blank" rel="noreferer" style={{ width: "100%", margin: "1em auto", background: "var(--mainColor)", color: "#fff", fontWeight: 900 }}>View Project&nbsp;<FontAwesomeIcon icon="external-link-alt" style={{ maxWidth: "1.5em", marginLeft: "0.5em" }}/></a>}
+          {project.fields.externalLink && <a href={project.fields.externalLink} className="button" target="_blank" rel="noreferer" style={{ width: "100%", margin: "1em auto", background: "var(--mainColor)", color: "#fff", fontWeight: 900 }}>View Project&nbsp;<FontAwesomeIcon width="16" icon="external-link-alt" style={{ maxWidth: "1.5em", marginLeft: "0.5em" }}/></a>}
 
-          {project.fields.youtubeLink && <a href={project.fields.youtubeLink} className="button" target="_blank" rel="noreferer" style={{ width: "100%", margin: "1em auto", background: "#f44336", color: "#fff", fontWeight: 900 }}>Watch on YouTube <FontAwesomeIcon icon={["fab", "youtube"]} style={{ maxWidth: "1.5em", marginLeft: "0.5em" }}/></a>}
+          {project.fields.youtubeLink && <a href={project.fields.youtubeLink} className="button" target="_blank" rel="noreferer" style={{ width: "100%", margin: "1em auto", background: "#f44336", color: "#fff", fontWeight: 900 }}>Watch on YouTube <FontAwesomeIcon width="16" icon={["fab", "youtube"]} style={{ maxWidth: "1.5em", marginLeft: "0.5em" }}/></a>}
 
           
           <div dangerouslySetInnerHTML={{ __html: project.html }} />

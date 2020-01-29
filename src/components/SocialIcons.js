@@ -13,15 +13,15 @@ const SocialIcons = () => {
 
     <SocialIconsGrid>
       <a title="twitter" href="https://twitter.com/mediasweatshirt">
-        <FontAwesomeIcon icon={['fab', 'twitter']} />
+        <FontAwesomeIcon width="16" icon={['fab', 'twitter']} />
       </a>
 
       <a title="instagram" href="https://www.instagram.com/mediasweatshirt/">
-        <FontAwesomeIcon icon={['fab', 'instagram']} />
+        <FontAwesomeIcon width="16" icon={['fab', 'instagram']} />
       </a>
 
       <a title="email" href="mailto:Hello@sweatshirtmedia.com">
-        <FontAwesomeIcon icon='envelope' />
+        <FontAwesomeIcon width="16" icon='envelope' />
       </a>
 
     </SocialIconsGrid>
@@ -51,7 +51,7 @@ a{
     transition: 100ms;
 
     color: #fff;
-    max-width: 2rem;
+    width: 2rem;
 
   }
 

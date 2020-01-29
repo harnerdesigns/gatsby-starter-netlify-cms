@@ -20,9 +20,12 @@ class VideoBanner extends React.Component {
 
     this.state = {playing: false}
 
+
   }
   componentDidMount = () => {
-    this.playVideo();
+    this.refs.vidRef.oncanplaythrough = this.playVideo();
+
+    // this.playVideo();
   };
 
   componentWillUnmount = () => {
@@ -46,14 +49,14 @@ class VideoBanner extends React.Component {
   render = () => {
     return (
       <>
-        <video ref="vidRef" loop muted preload="metadata" poster={BannerCover} style={{ position: "absolute", filter: "grayscale(1)", top: "50%", left: "50%", right: 0, bottom: 0, width: "100%", height: "100%", transform: "translate(-50%, -50%)", objectFit: "cover" }}>
+        <video ref="vidRef" loop muted preload="none" poster={BannerCover} style={{ position: "absolute", filter: "grayscale(1)", top: "50%", left: "50%", right: 0, bottom: 0, width: "100%", height: "100%", transform: "translate(-50%, -50%)", objectFit: "cover" }}>
           <source src={BannerVideoWEBM} type="video/webm" />
           <source src={BannerVideoMP4} type="video/mp4" />
         </video>
 
         <VideoControls>
 
-          {this.state.playing ? <FontAwesomeIcon icon="pause" onClick={this.pauseVideo} /> : <FontAwesomeIcon icon="play" onClick={this.playVideo} />}
+          {this.state.playing ? <FontAwesomeIcon width="16" icon="pause" onClick={this.pauseVideo} /> : <FontAwesomeIcon width="16" icon="play" onClick={this.playVideo} />}
           <Link to="/portfolio/desure-youre-so-vain/">Desure - You're So Vain</Link>
         </VideoControls>
       </>
@@ -76,16 +79,27 @@ position: absolute;
 bottom: 1em;
 left: 1em;
 color: #fff;
+transition: 300ms;
+
 
 
 a{
   color: inherit;
   text-decoration: underline;
+  &:hover{
+    opacity: 0.7;
+    color: var(--mainColor);
+  }
 }
 
   svg{
     width: 1em;
     vertical-align: middle; margin-right: 0.5em;
+    &:hover{
+      opacity: 0.7;
+      color: var(--mainColor);
+
+    }
   }
 
 `

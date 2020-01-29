@@ -18,6 +18,8 @@ import SocialIcons from '../components/SocialIcons'
 
 import VideoBanner from '../components/VideoBanner'
 
+import BannerCover from "../img/videobg.png"
+
 
 export const IndexPageTemplate = ({
   image,
@@ -28,17 +30,15 @@ export const IndexPageTemplate = ({
     <div>
 
       <Container style={{
-        padding: "1rem", minHeight: "100vh", backgroundImage: `url(${
-          !!image.childImageSharp ? image.childImageSharp.fluid.src : image
-          })`, backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed", alignItems: "center", justifyContent: "center"
+        padding: "1rem", minHeight: "100vh", backgroundImage: `url(${BannerCover})`, backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed", alignItems: "center", justifyContent: "center"
       }} >
 
-        <div style={{zIndex: 999}}>
+        <div style={{ zIndex: 999 }}>
           <img src={logo} alt="Sweatshirt" style={{ width: '100%', height: 'auto' }} />
           <BannerNav>
 
             <Link to="/portfolio">See Our Work</Link>
-            <Link to="/contact">Get In Touch &raquo;</Link> 
+            <Link to="/contact">Get In Touch &raquo;</Link>
 
 
 
@@ -46,13 +46,13 @@ export const IndexPageTemplate = ({
           <SocialIcons />
         </div>
 
-      <VideoBanner />
+        <VideoBanner />
 
 
       </Container>
 
       <Container>
-        <h1>We Are Makers. <Link to="/portfolio" style={{fontSize: "0.5em", verticalAlign: "middle", color: "inherit", fontWeight: 100}}>See&nbsp;Our&nbsp;Work&nbsp;&raquo;</Link></h1>
+        <h1>We Are Makers. <Link to="/portfolio" style={{ fontSize: "0.5em", verticalAlign: "middle", color: "inherit", fontWeight: 100 }}>See&nbsp;Our&nbsp;Work&nbsp;&raquo;</Link></h1>
         <Grid col={3}>
           {projects.map(({ node: project }, i) => (
             <ProjectCard project={project} />
