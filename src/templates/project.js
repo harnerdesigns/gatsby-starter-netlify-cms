@@ -36,7 +36,7 @@ const ImagesWrapper = styled.div`
     width: 100%;
     height: auto;
     display: grid;
-    grid-template-columns: 1fr 1fr; 
+    grid-template-columns: 1fr; 
     grid-gap: 1em;   
     grid-column: 1;
     @media ${breakpoints.laptop} {

@@ -18,7 +18,7 @@ import SocialIcons from '../components/SocialIcons'
 
 import VideoBanner from '../components/VideoBanner'
 
-import BannerCover from "../img/videobg.png"
+import BannerCover from "../img/videobg.jpg"
 
 
 export const IndexPageTemplate = ({
@@ -33,7 +33,10 @@ export const IndexPageTemplate = ({
         padding: "1rem", minHeight: "100vh", backgroundImage: `url(${BannerCover})`, backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed", alignItems: "center", justifyContent: "center"
       }} >
 
-        <div style={{ zIndex: 999 }}>
+<VideoBanner />
+
+
+        <div style={{ zIndex: "999" }}>
           <img src={logo} alt="Sweatshirt" style={{ width: '100%', height: 'auto' }} />
           <BannerNav>
 
@@ -46,7 +49,6 @@ export const IndexPageTemplate = ({
           <SocialIcons />
         </div>
 
-        <VideoBanner />
 
 
       </Container>

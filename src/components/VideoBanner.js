@@ -11,7 +11,7 @@ import styled from "styled-components"
 
 import BannerVideoMP4 from "../img/videobanner.mp4"
 import BannerVideoWEBM from "../img/videobanner.webm"
-import BannerCover from "../img/videobg.png"
+import BannerCover from "../img/videobg.jpg"
 
 class VideoBanner extends React.Component {
   constructor(props){
@@ -48,8 +48,14 @@ class VideoBanner extends React.Component {
  
   render = () => {
     return (
-      <>
-        <video ref="vidRef" loop muted preload="none" poster={BannerCover} style={{ position: "absolute", filter: "grayscale(1)", top: "50%", left: "50%", right: 0, bottom: 0, width: "100%", height: "100%", transform: "translate(-50%, -50%)", objectFit: "cover" }}>
+      <VideoContainer>
+        <video ref="vidRef" loop muted preload="none" poster={BannerCover} 
+        style={{ 
+          
+        filter: "grayscale(1)",
+        width: "100%", 
+        height: "100%", 
+        objectFit: "cover",  }}>
           <source src={BannerVideoWEBM} type="video/webm" />
           <source src={BannerVideoMP4} type="video/mp4" />
         </video>
@@ -59,7 +65,7 @@ class VideoBanner extends React.Component {
           {this.state.playing ? <FontAwesomeIcon width="16" icon="pause" onClick={this.pauseVideo} /> : <FontAwesomeIcon width="16" icon="play" onClick={this.playVideo} />}
           <Link to="/portfolio/desure-youre-so-vain/">Desure - You're So Vain</Link>
         </VideoControls>
-      </>
+      </VideoContainer>
     )
   }
 }
@@ -72,6 +78,17 @@ VideoBanner.propTypes = {
 
 export default VideoBanner
 
+const VideoContainer = styled.div`
+position: absolute;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+width: 100%;
+height: 100%;
+
+`
+
 
 const VideoControls = styled.div`
 
@@ -80,6 +97,7 @@ bottom: 1em;
 left: 1em;
 color: #fff;
 transition: 300ms;
+z-index: 2;
 
 
 
