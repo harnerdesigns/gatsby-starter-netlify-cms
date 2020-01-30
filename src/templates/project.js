@@ -7,6 +7,8 @@ import styled from "styled-components"
 
 import Img from 'gatsby-image'
 
+import Gallery from "../components/Gallery"
+
 
 import { breakpoints } from "../components/breakpoints"
 
@@ -19,7 +21,7 @@ const VideoGrid = styled.div`
   align-items: flex-start;
 
   @media ${breakpoints.laptop} {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 3fr 2fr;
   }
 `
 const VideoWrapper = styled.div`
@@ -84,17 +86,20 @@ const SingleProject = props => {
     return (match && match[7].length == 11) ? match[7] : false;
   };
 
-  const images = (project.frontmatter.images ? project.frontmatter.images.map(({ image }) => {
-    return (<img src={image.childImageSharp.resize.src} />)
-  }) : "")
+  let galleryArray = []
+
+  if (project.frontmatter.featuredImage) { galleryArray.push( project.frontmatter.featuredImage )}
+  if (project.frontmatter.images) { galleryArray.push( ...project.frontmatter.images )}
+  
   return (
     <Layout>
       <SEO title={project.frontmatter.title + " - " + project.fields.type + " " + (project.fields.clients.length ? "for " + project.fields.clients : "")} />
       <VideoGrid>
-        
+        <Gallery pictures={galleryArray} />
 
 
-        <ImagesWrapper>
+
+        {/* <ImagesWrapper>
 
         {project.fields.youtubeLink ?
           <VideoWrapper>
@@ -117,7 +122,7 @@ const SingleProject = props => {
             : ""}
 
 
-        </ImagesWrapper>
+        </ImagesWrapper> */}
 
 
 
@@ -127,11 +132,11 @@ const SingleProject = props => {
             {project.fields.type}{" "}
             {project.fields.clients.length ? "for " + project.fields.clients : ""}
           </h2>
-          {project.fields.externalLink && <a href={project.fields.externalLink} className="button" target="_blank" rel="noreferer" style={{ width: "100%", margin: "1em auto", background: "var(--mainColor)", color: "#fff", fontWeight: 900 }}>View Project&nbsp;<FontAwesomeIcon width="16" icon="external-link-alt" style={{ maxWidth: "1.5em", marginLeft: "0.5em" }}/></a>}
+          {project.fields.externalLink && <a href={project.fields.externalLink} className="button" target="_blank" rel="noreferer" style={{ width: "100%", margin: "1em auto", background: "var(--mainColor)", color: "#fff", fontWeight: 900 }}>View Project&nbsp;<FontAwesomeIcon width="16" icon="external-link-alt" style={{ maxWidth: "1.5em", marginLeft: "0.5em" }} /></a>}
 
-          {project.fields.youtubeLink && <a href={project.fields.youtubeLink} className="button" target="_blank" rel="noreferer" style={{ width: "100%", margin: "1em auto", background: "#f44336", color: "#fff", fontWeight: 900 }}>Watch on YouTube <FontAwesomeIcon width="16" icon={["fab", "youtube"]} style={{ maxWidth: "1.5em", marginLeft: "0.5em" }}/></a>}
+          {project.fields.youtubeLink && <a href={project.fields.youtubeLink} className="button" target="_blank" rel="noreferer" style={{ width: "100%", margin: "1em auto", background: "#f44336", color: "#fff", fontWeight: 900 }}>Watch on YouTube <FontAwesomeIcon width="16" icon={["fab", "youtube"]} style={{ maxWidth: "1.5em", marginLeft: "0.5em" }} /></a>}
 
-          
+
           <div dangerouslySetInnerHTML={{ __html: project.html }} />
         </ProjectContent>
       </VideoGrid>

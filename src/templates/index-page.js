@@ -19,6 +19,7 @@ import SocialIcons from '../components/SocialIcons'
 import VideoBanner from '../components/VideoBanner'
 
 import BannerCover from "../img/videobg.jpg"
+import SweatshirtIcon from "../img/sweatshirt-icon.svg"
 
 
 export const IndexPageTemplate = ({
@@ -33,9 +34,10 @@ export const IndexPageTemplate = ({
         padding: "1rem", minHeight: "100vh", backgroundImage: `url(${BannerCover})`, backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed", alignItems: "center", justifyContent: "center"
       }} >
 
-<VideoBanner />
+        <VideoBanner />
 
 
+          <img src={SweatshirtIcon} alt="Sweatshirt" style={{ width: '15%', height: 'auto', position:"absolute", bottom:"1em", right: "1em" }} />
         <div style={{ zIndex: "999" }}>
           <img src={logo} alt="Sweatshirt" style={{ width: '100%', height: 'auto' }} />
           <BannerNav>
@@ -66,11 +68,11 @@ export const IndexPageTemplate = ({
       </Container>
 
       <Container style={{
-        minHeight: '60vh', backgroundImage: `url(${
+        minHeight: '80vh', backgroundImage: `url(${
           !!storyTeller.childImageSharp ? storyTeller.childImageSharp.fluid.src : storyTeller
           })`, backgroundSize: "cover", backgroundPosition: "center center", backgroundAttachment: "fixed"
       }}>
-        <h1 style={{ color: "#fff", margin: "2em 0" }}>We Are Storytellers.</h1>
+        <h1 style={{ color: "#fff", width: "100%", textShadow: "1px 1px 0 var(--mainColor), 2px 2px 0 var(--darkerColor), 3px 3px 0 var(--darkerColor), 4px 4px 0 var(--darkerColor), 5px 5px 0 var(--darkerColor)" }}>We Are Storytellers.</h1>
         <Grid col={3} style={{ background: "transparent", width: "80%" }}>
           <SkillsCard>
             <h4>Brand Identity</h4>
@@ -204,15 +206,22 @@ const Container = styled.section`
   justify-content: center;
   position: relative;
   padding: 5vh 1vh;
+  background: #fff;
 
   & > h1{
     text-align: center;
+
+    
+  @media ${breakpoints.laptop} {
+    font-size: 5em;
+    }
   }
 `
 const SkillsCard = styled.div`
 background: #fff;
 padding: 1rem;
 transition: 100ms;
+box-shadow: 0 3px 6px -2px rgba(0,0,0,0.4);
 
 h4{
   margin: 0;

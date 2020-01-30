@@ -44,7 +44,7 @@ const Navbar = class extends React.Component {
         <div className="container">
           <div className="navbar-brand">
             <AniLink cover bg="#9C27B0" to="/" className="navbar-item" title="Logo">
-              <h1 style={{ margin: 0, fontFamily: '"SeattleSans", sans-serif'}}>Sweatshirt</h1>
+              <img src={logo} alt="Sweatshirt" style={{ width: '20vw', height: 'auto' }} />
             </AniLink>
             {/* Hamburger menu */}
             <div

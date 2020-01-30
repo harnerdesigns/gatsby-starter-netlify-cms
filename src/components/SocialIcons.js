@@ -3,7 +3,9 @@ import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 
-import styled, { keyframes } from "styled-components"
+import styled from "styled-components"
+
+
 
 
 const SocialIcons = () => {
@@ -18,10 +20,6 @@ const SocialIcons = () => {
 
       <a title="instagram" href="https://www.instagram.com/mediasweatshirt/">
         <FontAwesomeIcon width="16" icon={['fab', 'instagram']} />
-      </a>
-
-      <a title="email" href="mailto:Hello@sweatshirtmedia.com">
-        <FontAwesomeIcon width="16" icon='envelope' />
       </a>
 
     </SocialIconsGrid>
@@ -51,7 +49,7 @@ a{
     transition: 100ms;
 
     color: #fff;
-    width: 2rem;
+    width: 1.5rem;
 
   }
 

@@ -8,6 +8,34 @@ import React from "react"
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 
+const Meta = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction:column;
+  margin: 0 0 auto;
+  padding: 0.5em 0;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  background: rgba(255,255,255,0.8);
+  color: #333;
+  transition: 300ms;
+
+  h4,h5
+  {
+    margin: 0;
+    text-align: center;
+  }
+
+  h4{
+    font-weight: 900;
+  }
+
+`
+
+
 const Card = styled.div`
   background: #fff;
   // padding: 0.5em;
@@ -16,30 +44,24 @@ const Card = styled.div`
   justify-content: stretch;
   flex-direction: column;
   min-width: 100%;
-  border-bottom: 10px solid #000;
   height: 100%;
+  position: relative;
+  box-shadow: 0 3px 6px -2px rgba(0,0,0,0.4);
+  border-radius: 10px;
   img {
+    border-radius: 10px;
     width: 100%;
     height: auto;
     margin-bottom: auto;
   }
-`
 
-const Meta = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 0 0 auto;
-  padding: 0.5em 0;
-  width: 100%;
+  &:hover{
 
-  h5
-  {
-    margin: 0;
-    text-align: center;
-    font-weight: 100;
+    ${Meta}{
+      background: var(--mainColor);
+      color: #fff;
+    }
   }
-
 `
 
 const ProjectCard = ({ project, style, featured }) => (
@@ -51,7 +73,8 @@ const ProjectCard = ({ project, style, featured }) => (
     <Card>
       <img src={project.frontmatter.featuredImage.childImageSharp.resize.src} />
       <Meta>
-        <h5>{project.frontmatter.title}</h5>
+        <h4>{project.frontmatter.title}</h4>
+        {project.fields.type && <h5>{project.fields.type}</h5>}
       </Meta>
     </Card>
   </AniLink>
