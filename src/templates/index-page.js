@@ -37,7 +37,7 @@ export const IndexPageTemplate = ({
         <VideoBanner />
 
 
-          <img src={SweatshirtIcon} alt="Sweatshirt" style={{ width: '15%', height: 'auto', position:"absolute", bottom:"1em", right: "1em" }} />
+          <img src={SweatshirtIcon} alt="Sweatshirt" style={{ opacity:"0.8", width: '10%', height: 'auto', position:"absolute", bottom:"3em", right: "3em" }} />
         <div style={{ zIndex: "999" }}>
           <img src={logo} alt="Sweatshirt" style={{ width: '100%', height: 'auto' }} />
           <BannerNav>
