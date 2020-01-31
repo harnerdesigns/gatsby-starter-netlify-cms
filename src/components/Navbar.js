@@ -4,6 +4,10 @@ import { Link } from 'gatsby'
 import AniLink from "gatsby-plugin-transition-link/AniLink"
 import github from '../img/github-icon.svg'
 import logo from '../img/logo.svg'
+import styled from 'styled-components'
+
+import { breakpoints } from "./breakpoints"
+
 
 const Navbar = class extends React.Component {
   constructor(props) {
@@ -44,7 +48,7 @@ const Navbar = class extends React.Component {
         <div className="container">
           <div className="navbar-brand">
             <AniLink cover bg="#9C27B0" to="/" className="navbar-item" title="Logo">
-              <img src={logo} alt="Sweatshirt" style={{ width: '20vw', height: 'auto' }} />
+              <Logo src={logo} alt="Sweatshirt" />
             </AniLink>
             {/* Hamburger menu */}
             <div
@@ -83,3 +87,18 @@ const Navbar = class extends React.Component {
 }
 
 export default Navbar
+
+
+const Logo = styled.img`
+
+width: 50vw;
+filter: invert(1);
+
+@media ${breakpoints.laptop} {
+
+  width: 20vw;
+
+}
+
+
+`

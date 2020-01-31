@@ -80,11 +80,7 @@ const SingleProject = props => {
     data: { project },
   } = props
 
-  const videoId = (url) => {
-    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
-    var match = url.match(regExp);
-    return (match && match[7].length == 11) ? match[7] : false;
-  };
+  
 
   let galleryArray = []
 
@@ -95,7 +91,7 @@ const SingleProject = props => {
     <Layout>
       <SEO title={project.frontmatter.title + " - " + project.fields.type + " " + (project.fields.clients.length ? "for " + project.fields.clients : "")} />
       <VideoGrid>
-        <Gallery pictures={galleryArray} />
+        <Gallery pictures={galleryArray} video={project.fields.youtubeLink} />
 
 
 
