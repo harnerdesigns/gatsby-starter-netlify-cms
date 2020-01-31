@@ -1,11 +1,12 @@
 ---
 templateKey: project
 title: Way Down South Apparel
-featuredImage: /img/Way Down South.png
+featuredImage: /img/Thunder Spikes Social Avatar.jpg
 weight: 996
 externalLink: 'https://www.waydownsouthco.com/'
 type: Branding
 images:
+  - image: /img/Way Down South.png
   - image: /img/King Peach Tattoo Sticker.jpg
   - image: /img/Josef Flowers Sweatshirt Post.jpg
   - image: /img/king+of+hearts+site.jpg
