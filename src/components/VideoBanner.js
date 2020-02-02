@@ -55,9 +55,9 @@ class VideoBanner extends React.Component {
         filter: "grayscale(1)",
         width: "100%", 
         height: "100%", 
-        objectFit: "cover",  }}>
-          <source src={BannerVideoWEBM} type="video/webm" />
+        objectFit: "cover", zIndex: 1 }}>
           <source src={BannerVideoMP4} type="video/mp4" />
+          <source src={BannerVideoWEBM} type="video/webm" />
         </video>
 
         <VideoControls>
@@ -86,7 +86,8 @@ right: 0;
 bottom: 0;
 width: 100%;
 height: 100%;
-
+z-index: 999;
+transform: translateZ(1px);
 `
 
 

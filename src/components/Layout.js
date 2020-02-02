@@ -7,7 +7,7 @@ import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from 'gatsby'
 
 import './FontAwesome'
-const TemplateWrapper = ({ children, noHeader = false }) => {
+const TemplateWrapper = ({ children, noHeader = false, cta=true }) => {
   const { title, description } = useSiteMetadata()
   return (
     <div>
@@ -45,7 +45,7 @@ const TemplateWrapper = ({ children, noHeader = false }) => {
       </Helmet>
       {!noHeader && <Navbar />}
       <main>{children}</main>
-      <Footer />
+      <Footer cta={cta} />
     </div>
   )
 }

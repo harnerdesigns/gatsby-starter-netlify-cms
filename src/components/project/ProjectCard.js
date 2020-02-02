@@ -74,7 +74,7 @@ const ProjectCard = ({ project, style, featured }) => (
       <img src={project.frontmatter.featuredImage.childImageSharp.resize.src} />
       <Meta>
         <h4>{project.frontmatter.title}</h4>
-        {project.fields.type && <h5>{project.fields.type}</h5>}
+{project.fields.type && <h5>{project.fields.type} {project.fields.clients[0] && <span>for {project.fields.clients}</span>}</h5>}
       </Meta>
     </Card>
   </AniLink>

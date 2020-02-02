@@ -19,7 +19,9 @@ import SocialIcons from '../components/SocialIcons'
 import VideoBanner from '../components/VideoBanner'
 
 import BannerCover from "../img/videobg.jpg"
+
 import SweatshirtIcon from "../img/sweatshirt-icon.svg"
+
 
 
 export const IndexPageTemplate = ({
@@ -31,14 +33,14 @@ export const IndexPageTemplate = ({
     <div>
 
       <Container style={{
-        padding: "1rem", minHeight: "100vh", backgroundImage: `url(${BannerCover})`, backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed", alignItems: "center", justifyContent: "center"
+        padding: "1rem", minHeight: "100vh", backgroundImage: `url(${BannerCover})`, backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed", alignItems: "center", justifyContent: "center", backfaceVisibility: "visible", position: 'relative',
       }} >
 
         <VideoBanner />
 
 
-          <img src={SweatshirtIcon} alt="Sweatshirt" style={{ opacity:"0.8", width: '10%', height: 'auto', position:"absolute", bottom:"3em", right: "3em" }} />
-        <div style={{ zIndex: "999" }}>
+          <SweatshirtIconStyled src={SweatshirtIcon} alt="Sweatshirt" />
+        <div style={{ zIndex: "999", position: "relative" }}>
           <img src={logo} alt="Sweatshirt" style={{ width: '100%', height: 'auto' }} />
           <BannerNav>
 
@@ -78,10 +80,19 @@ export const IndexPageTemplate = ({
             <h4>Brand Identity</h4>
           </SkillsCard>
           <SkillsCard>
-            <h4>Audio + Video</h4>
+            <h4>Video Production</h4>
           </SkillsCard>
           <SkillsCard>
-            <h4>Social Strategy</h4>
+            <h4>Audio Production</h4>
+          </SkillsCard>
+          <SkillsCard>
+            <h4>Art Direction</h4>
+          </SkillsCard>
+          <SkillsCard>
+            <h4>Web Development</h4>
+          </SkillsCard>
+          <SkillsCard>
+            <h4>Marketing Strategy</h4>
           </SkillsCard>
         </Grid>
 
@@ -177,7 +188,7 @@ export const pageQuery = graphql`
           
           featuredImage {
             childImageSharp {
-              resize(width: 1200) {
+              resize(width: 1200, height: 672, cropFocus: CENTER  ) {
                 src
               }
             }
@@ -232,6 +243,25 @@ h4{
   background: var(--mainColor);
   color: #fff;
 }
+`
+
+const SweatshirtIconStyled = styled.img`
+
+opacity:0.5; 
+width: 15%; 
+height: auto; 
+position:absolute; 
+bottom:1rem; 
+  right:1rem;
+  z-index: 999999;
+
+@media ${breakpoints.laptop} {
+  bottom:3em; 
+  right:3em;
+  width: 10%; 
+
+  }
+
 `
 
 const Form = styled.form`

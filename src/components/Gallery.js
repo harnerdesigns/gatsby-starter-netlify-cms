@@ -66,7 +66,7 @@ class VideoBanner extends React.Component {
               width: "100%",
               height: "100%",
               border: 0,
-            }} frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src={"https://www.youtube.com/embed/" + this.state.youtubeId + "?autoplay=0&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0"}></iframe>
+            }} frameborder="0" scrolling="no" marginheight="0" marginwidth="0" type="text/html" src={"https://www.youtube.com/embed/" + this.state.youtubeId + "?autoplay=1&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0"}></iframe>
           </VideoWrapper>
 
           : "" }
