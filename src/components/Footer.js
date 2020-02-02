@@ -77,6 +77,7 @@ a.button{
   font-weight: 900;
   box-shadow: 2px 2px 0 var(--darkerColor), 4px 4px 0 var(--darkerColor), 6px 6px 0 var(--darkerColor);
   transition: 200ms;
+  border-radius: 0.5em;
 
   &:hover{
     background: var(--darkerColor);
