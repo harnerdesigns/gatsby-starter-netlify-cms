@@ -4,7 +4,7 @@ title: Way Down South Apparel
 featuredImage: /img/Thunder Spikes Social Avatar.jpg
 weight: 996
 externalLink: 'https://www.waydownsouthco.com/'
-type: Branding
+type: Design + Marketing Strategy + Store Creation
 images:
   - image: /img/Way Down South.png
   - image: /img/King Peach Tattoo Sticker.jpg
