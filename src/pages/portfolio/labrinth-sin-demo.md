@@ -1,7 +1,9 @@
 ---
 templateKey: project
-title: Labrinth | SIN (DEMO)
+title: SIN (DEMO)
 featuredImage: /img/SIN.png
+clients:
+  - Labrinth
 youtubeLink: 'https://www.youtube.com/watch?v=8qnLOthDOQw'
 type: Music Video Art
 ---
