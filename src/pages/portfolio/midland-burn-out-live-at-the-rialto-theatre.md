@@ -1,7 +1,9 @@
 ---
 templateKey: project
-title: Midland | Burn Out (Live)
+title: Burn Out (Live)
 featuredImage: /img/Burn Out Rialto.png
+clients:
+  - Midland
 youtubeLink: 'https://www.youtube.com/watch?v=KwYDJdiw7CY'
 type: Music Video
 ---
