@@ -1,7 +1,9 @@
 ---
 templateKey: project
-title: Midland | Playboys
+title: Playboys
 featuredImage: /img/Playboys.png
+clients:
+  - Midland
 youtubeLink: 'https://www.youtube.com/watch?v=sbbNuvEDDJM'
 type: Music Video
 ---
