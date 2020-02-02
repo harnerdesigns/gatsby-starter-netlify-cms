@@ -1,7 +1,9 @@
 ---
 templateKey: project
-title: Desure | You're So Vain
+title: You're So Vain
 featuredImage: /img/You're So Vain.png
+clients:
+  - Desure
 weight: 999
 youtubeLink: 'https://www.youtube.com/watch?v=g469DxOxZjo'
 type: Music Video
