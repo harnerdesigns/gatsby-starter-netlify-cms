@@ -1,6 +1,6 @@
 ---
 templateKey: project
-title: Desure | Kick Rocks
+title: Kick Rocks
 featuredImage: /img/Kick Rocks.png
 clients:
   - Desure
