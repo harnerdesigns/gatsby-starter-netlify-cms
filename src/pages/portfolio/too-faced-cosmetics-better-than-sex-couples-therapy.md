@@ -1,7 +1,9 @@
 ---
 templateKey: project
-title: Too Faced Cosmetics | Better Than Sex
+title: Better Than Sex
 featuredImage: /img/Better Than Sex.png
+clients:
+  - Too Faced Cosmetics
 youtubeLink: 'https://www.youtube.com/watch?v=VfXxp9gaJY4'
 type: Commercial
 ---
