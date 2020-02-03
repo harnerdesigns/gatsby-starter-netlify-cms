@@ -92,6 +92,12 @@ collections:
           hint: "Either YouTube Link OR External Link",
         }
       - {
+        label: "Embed YouTube Video?",
+        name: "embedYouTube",
+        widget: "boolean",
+        default: true
+      }
+      - {
           label: "External Link",
           name: "externalLink",
           widget: "string",

@@ -102,6 +102,11 @@ const descriptors = [
         defaultValue: "",
       },
       {
+        name: "embedYouTube",
+        getter: node => node.frontmatter.embedYouTube,
+        defaultValue: true,
+      },
+      {
         name: "externalLink",
         getter: node => node.frontmatter.externalLink,
         defaultValue: "",
