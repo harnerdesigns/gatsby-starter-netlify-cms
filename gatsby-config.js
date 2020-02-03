@@ -31,11 +31,10 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-google-analytics`,
+      resolve: "gatsby-plugin-google-tagmanager",
       options: {
-        // The property ID; the tracking code won't be generated without it
-        trackingId: "UA-157538830-1"
-      },
+        id: "GTM-NMLTH3G",
+      }
     },
     'gatsby-plugin-sharp',
     `gatsby-plugin-transition-link`,
