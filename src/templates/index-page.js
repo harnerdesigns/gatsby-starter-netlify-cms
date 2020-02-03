@@ -58,13 +58,15 @@ export const IndexPageTemplate = ({
       </Container>
 
       <Container>
-        <h1>We Are Makers. <Link to="/portfolio" style={{ fontSize: "0.5em", verticalAlign: "middle", color: "inherit", fontWeight: 100 }}>See&nbsp;Our&nbsp;Work&nbsp;&raquo;</Link></h1>
+        <h1>We Are Makers.</h1>
         <Grid col={3}>
           {projects.map(({ node: project }, i) => (
             <ProjectCard project={project} />
             // <ProjectCard project={project} featured={i === 0}/>
           ))}
+        <Link to="/portfolio" className="button" style={{ verticalAlign: "middle", color: "inherit", fontWeight: 100 }}>See The Rest Of Our Work &raquo;</Link>
         </Grid>
+
 
 
       </Container>
@@ -100,7 +102,7 @@ export const IndexPageTemplate = ({
 
 
       <Container>
-        <h1>This Is Who We Are.</h1>
+        <h1>Get To Know Us.</h1>
         <Grid>
           {team.map(({ node: member }) => (
             <TeamCard person={member} />
@@ -180,7 +182,7 @@ export const pageQuery = graphql`
       }
     }
   }
-  projects: allMarkdownRemark(filter: {frontmatter: {templateKey: {eq: "project"}}}, limit: 6, sort: {fields: fields___weight, order: DESC}) {
+  projects: allMarkdownRemark(filter: {frontmatter: {templateKey: {eq: "project"}}}, limit: 5, sort: {fields: fields___weight, order: DESC}) {
     edges {
       node {
         frontmatter {
@@ -233,6 +235,7 @@ background: #fff;
 padding: 1rem;
 transition: 100ms;
 box-shadow: 0 3px 6px -2px rgba(0,0,0,0.4);
+border-radius: 1em;
 
 h4{
   margin: 0;

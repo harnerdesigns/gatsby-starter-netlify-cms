@@ -8,6 +8,7 @@ import { breakpoints } from "./breakpoints"
 
 import logo from '../img/logo.svg'
 import waves from '../img/waves.svg'
+import ContactForm from './contact/contactForm'
 
 
 
@@ -22,10 +23,10 @@ const Footer = class extends React.Component {
         <div>
       <h2>We Want To Help Tell</h2>
       <h1><em>Your</em> Story.</h1>
+      <p>Drop us a line and let us know what story you're trying to tell</p>
       </div>
 
-      <Link to="/contact" className="button button--large">Let's Chat &raquo;</Link>
-
+          <ContactForm />
       </FooterCTA>}
 
       <StyledFooter>
@@ -90,7 +91,7 @@ a.button{
   
   display: grid;
 grid-template-columns: 1fr 1fr;
-padding: 1rem 3rem;
+padding: 3rem;
 grid-gap: 3rem;
 
 
@@ -109,6 +110,16 @@ h1, h2 {
 }
 
 
+}
+
+
+form{
+  width: 70%;
+  margin: 0 auto 0 0;
+
+  label{
+    color: #fff;
+  }
 }
 
 `
