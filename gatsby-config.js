@@ -30,6 +30,13 @@ module.exports = {
         name: 'images',
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        // The property ID; the tracking code won't be generated without it
+        trackingId: "UA-157538830-1"
+      },
+    },
     'gatsby-plugin-sharp',
     `gatsby-plugin-transition-link`,
     'gatsby-transformer-sharp',
