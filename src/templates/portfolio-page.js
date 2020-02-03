@@ -72,10 +72,10 @@ export const portfolioPageQuery = graphql`
             
             featuredImage {
               childImageSharp {
-                resize(width: 1200) {
-                  src
-                }
+              resize(width: 1200, height: 672, cropFocus: CENTER  ) {
+                src
               }
+            }
             }
           }
           fields {
