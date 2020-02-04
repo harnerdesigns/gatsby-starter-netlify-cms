@@ -88,7 +88,7 @@ const SingleProject = props => {
   if (project.frontmatter.images) { galleryArray.push( ...project.frontmatter.images )}
   
   return (
-    <Layout>
+    <Layout cta={false}>
       <SEO title={project.frontmatter.title + " - " + project.fields.type + " " + (project.fields.clients.length ? "for " + project.fields.clients : "")} />
       <VideoGrid>
         <Gallery pictures={galleryArray} video={project.fields.youtubeLink} />

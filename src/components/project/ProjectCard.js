@@ -21,7 +21,7 @@ const Meta = styled.div`
   transform: translate(0, -50%);
   background: rgba(255,255,255,0.8);
   color: #333;
-  transition: 300ms;
+  transition: 100ms;
 
   h4,h5
   {
@@ -46,13 +46,15 @@ const Card = styled.div`
   min-width: 100%;
   height: 100%;
   position: relative;
-  box-shadow: 0 3px 6px -2px rgba(0,0,0,0.4);
-  border-radius: 10px;
+  box-shadow: var(--boxShadow);
+  border-radius: var(--borderRadius);
+  overflow: hidden;
   img {
-    border-radius: 10px;
+    border-radius: var(--borderRadius);
     width: 100%;
     height: auto;
     margin-bottom: auto;
+    transition: transform 1000ms, filter 300ms;
   }
 
   &:hover{
@@ -60,7 +62,10 @@ const Card = styled.div`
     ${Meta}{
       background: var(--mainColor);
       color: #fff;
+      box-shadow: var(--boxShadow);
     }
+
+    img{transform: scale(1.1); filter: blur(5px);}
   }
 `
 

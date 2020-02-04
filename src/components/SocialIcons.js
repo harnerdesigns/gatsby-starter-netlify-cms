@@ -8,12 +8,12 @@ import styled from "styled-components"
 
 
 
-const SocialIcons = () => {
+const SocialIcons = ({color, width}) => {
 
   return (
 
 
-    <SocialIconsGrid>
+    <SocialIconsGrid color={color} width={width}>
       <a title="twitter" href="https://twitter.com/mediasweatshirt">
         <FontAwesomeIcon width="16" icon={['fab', 'twitter']} />
       </a>
@@ -48,8 +48,8 @@ a{
   svg{
     transition: 100ms;
 
-    color: #fff;
-    width: 1.5rem;
+    color: ${props => props.color || "#fff"};
+    width: ${props => props.width || "1.5rem"};
 
   }
 

@@ -1,6 +1,15 @@
 import React from 'react'
 import { navigate } from 'gatsby-link'
 import Layout from '../../components/Layout'
+import ContactForm from '../../components/contact/contactForm'
+
+import { breakpoints } from "../../components/breakpoints"
+
+import styled from "styled-components"
+import waves from '../../img/waves.svg'
+import SocialIcons from '../../components/SocialIcons'
+
+
 
 function encode(data) {
   return Object.keys(data)
@@ -14,102 +23,88 @@ export default class Index extends React.Component {
     this.state = { isValidated: false }
   }
 
-  handleChange = e => {
-    this.setState({ [e.target.name]: e.target.value })
-  }
 
-  handleSubmit = e => {
-    e.preventDefault()
-    const form = e.target
-    fetch('/', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: encode({
-        'form-name': form.getAttribute('name'),
-        ...this.state,
-      }),
-    })
-      .then(() => navigate(form.getAttribute('action')))
-      .catch(error => alert(error))
-  }
 
   render() {
     return (
       <Layout cta={false}>
-        <section className="section">
-          <div className="container">
-            <div className="content">
+        <ContactContainer>
+            <ContactContent>
               <h1>Contact</h1>
-              <form
-                name="contact"
-                method="post"
-                action="/contact/thanks/"
-                data-netlify="true"
-                data-netlify-honeypot="bot-field"
-                onSubmit={this.handleSubmit}
-              >
-                {/* The `form-name` hidden field is required to support form submissions without JavaScript */}
-                <input type="hidden" name="form-name" value="contact" />
-                <div hidden>
-                  <label>
-                    Don’t fill this out:{' '}
-                    <input name="bot-field" onChange={this.handleChange} />
-                  </label>
-                </div>
-                <div className="field">
-                  <label className="label" htmlFor={'name'}>
-                    Your name
-                  </label>
-                  <div className="control">
-                    <input
-                      className="input"
-                      type={'text'}
-                      name={'name'}
-                      onChange={this.handleChange}
-                      id={'name'}
-                      required={true}
-                    />
-                  </div>
-                </div>
-                <div className="field">
-                  <label className="label" htmlFor={'email'}>
-                    Email
-                  </label>
-                  <div className="control">
-                    <input
-                      className="input"
-                      type={'email'}
-                      name={'email'}
-                      onChange={this.handleChange}
-                      id={'email'}
-                      required={true}
-                    />
-                  </div>
-                </div>
-                <div className="field">
-                  <label className="label" htmlFor={'message'}>
-                    Message
-                  </label>
-                  <div className="control">
-                    <textarea
-                      className="textarea"
-                      name={'message'}
-                      onChange={this.handleChange}
-                      id={'message'}
-                      required={true}
-                    />
-                  </div>
-                </div>
-                <div className="field">
-                  <button className="button is-link" type="submit">
-                    Send
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </section>
+              
+              <ContactForm />
+      <hr className="or" />
+      <h4 style={{margin: 0}}>Find Us Online</h4> 
+              <SocialIcons color="#333" width="3rem"/>
+
+            </ContactContent>
+        </ContactContainer>
       </Layout>
     )
   }
 }
+
+const ContactContainer = styled.section`
+
+width: 100%;
+display: flex;
+background: var(--mainColor) url(${waves}) bottom center no-repeat;
+background-size: 100%;
+overflow: hidden;
+flex-direction: column;
+
+@media ${breakpoints.laptop} {
+
+  flex-direction: row;
+  min-height: 85vh;
+
+
+}
+
+
+
+`
+
+const ContactContent = styled.div`
+
+background: #fff;
+
+padding: 1em;
+
+display: flex;
+align-items: center;
+justify-content: center;
+flex-direction: column;
+
+
+form{ width: 95%;}
+
+
+@media ${breakpoints.laptop} {
+
+width: 50%; 
+margin-left: auto;
+background: #fff;
+z-index: 1;
+position: relative;
+box-shadow: var(--boxShadow);
+
+&:after{
+  content: '';
+  width: 5vw;
+  height: 105vh;
+  transform: rotate(5deg) translate(-50%);
+  position: absolute;
+  // border: 1px solid red;
+  background: #fff;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  box-shadow: var(--boxShadow);
+
+}
+
+}
+
+
+`

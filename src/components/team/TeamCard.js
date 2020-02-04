@@ -17,6 +17,8 @@ const Card = styled.div`
   flex-direction: row;
   min-width: 100%;
   img {
+    box-shadow: var(--boxShadow);
+    border-radius: var(--borderRadius);
     width: 100%;
     height: auto;
   }
@@ -95,7 +97,6 @@ const Meta = styled.div`
 
   h5{
     font-size: 1rem;
-    margin-bottom: 1em;
   }
 
     @media ${breakpoints.laptop} {

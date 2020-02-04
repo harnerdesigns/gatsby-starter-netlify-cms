@@ -74,7 +74,7 @@ export const IndexPageTemplate = ({
       <Container style={{
         minHeight: '80vh', backgroundImage: `url(${
           !!storyTeller.childImageSharp ? storyTeller.childImageSharp.fluid.src : storyTeller
-          })`, backgroundSize: "cover", backgroundPosition: "center center", backgroundAttachment: "fixed"
+          })`, backgroundPosition: "center center", backgroundAttachment: "fixed"
       }}>
         <h1 style={{ color: "#fff", width: "100%", textShadow: "1px 1px 0 var(--mainColor), 2px 2px 0 var(--darkerColor), 3px 3px 0 var(--darkerColor), 4px 4px 0 var(--darkerColor), 5px 5px 0 var(--darkerColor)" }}>We Are Storytellers.</h1>
         <Grid col={3} style={{ background: "transparent", width: "80%" }}>
@@ -153,7 +153,7 @@ export const pageQuery = graphql`
       portfolioHeader
     }
   }
-  storyTeller: file(relativePath: {eq: "storytellers.jpg"}) {
+  storyTeller: file(relativePath: {eq: "what-the-hex-dark.png"}) {
     childImageSharp {
       fluid(maxWidth: 2400) {
         ...GatsbyImageSharpFluid
@@ -234,8 +234,8 @@ const SkillsCard = styled.div`
 background: #fff;
 padding: 1rem;
 transition: 100ms;
-box-shadow: 0 3px 6px -2px rgba(0,0,0,0.4);
-border-radius: 1em;
+box-shadow: var(--boxShadow);
+border-radius: var(--borderRadius);
 
 h4{
   margin: 0;
@@ -339,7 +339,7 @@ color: #fff;
     color: inherit;
     text-decoration: none;
     padding: 0.5em;
-    border-radius: 5px;
+    border-radius: var(--borderRadius);
     border: 1px solid #fff;
     width: 100%;
     text-align: center;
