@@ -2,6 +2,7 @@ const _ = require('lodash')
 const path = require('path')
 const { createFilePath } = require('gatsby-source-filesystem')
 const { fmImagesToRelative } = require('gatsby-remark-relative-images')
+const { attachFields } = require(`gatsby-plugin-node-fields`)
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
@@ -72,6 +73,66 @@ exports.createPages = ({ actions, graphql }) => {
   })
 }
 
+
+function isProjectNode(node) {
+  if (node.internal.type !== "MarkdownRemark") {
+    return false
+  }
+
+  return true
+}
+
+const descriptors = [
+  {
+    predicate: isProjectNode,
+    fields: [
+      {
+        name: "weight",
+        getter: node => node.frontmatter.weight,
+        defaultValue: 0,
+      },
+      {
+        name: "ogImage",
+        getter: node => node.frontmatter.ogImage,
+        defaultValue: "",
+      },
+      {
+        name: "youtubeLink",
+        getter: node => node.frontmatter.youtubeLink,
+        defaultValue: "",
+      },
+      {
+        name: "embedYouTube",
+        getter: node => node.frontmatter.embedYouTube,
+        defaultValue: true,
+      },
+      {
+        name: "externalLink",
+        getter: node => node.frontmatter.externalLink,
+        defaultValue: "",
+      },
+      {
+        name: "clients",
+        getter: node => node.frontmatter.clients,
+        defaultValue: [],
+      },
+      {
+        name: "type",
+        getter: node => node.frontmatter.type,
+        defaultValue: "Project",
+      },
+      {
+        name: "quote",
+        getter: node => node.frontmatter.quote,
+        defaultValue: "",
+      },
+    ],
+  },
+]
+
+
+
+
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions
   fmImagesToRelative(node) // convert image paths for gatsby images
@@ -83,5 +144,30 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       node,
       value,
     })
+
+    createNodeField({
+      name: `teamID`,
+      node,
+      value: (node.frontmatter.name ? slugify(node.frontmatter.name) : ""),
+    })
   }
+
+  attachFields(node, actions, getNode, descriptors)
 }
+
+function slugify(string) {
+  const a = 'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;'
+  const b = 'aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnoooooooooprrsssssttuuuuuuuuuwxyyzzz------'
+  const p = new RegExp(a.split('').join('|'), 'g')
+
+  return string.toLowerCase()
+    .replace(/\s+/g, '-') // Replace spaces with -
+    .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
+    .replace(/&/g, '-and-') // Replace & with 'and'
+    .replace(/[^\w\-]+/g, '') // Remove all non-word characters
+    .replace(/\-\-+/g, '-') // Replace multiple - with single -
+    .replace(/^-+/, '') // Trim - from start of text
+    .replace(/-+$/, '') // Trim - from end of text
+}
+
+
