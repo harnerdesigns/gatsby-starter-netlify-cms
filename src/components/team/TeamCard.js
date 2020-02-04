@@ -24,7 +24,7 @@ const Card = styled.div`
   }
 
 
-  a.full{
+  .full{
 
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -39,7 +39,7 @@ const Card = styled.div`
 
   }
 
-  a.flipped{ 
+  .flipped{ 
     grid-template-columns: 1fr 1fr;
     grid-auto-flow: dense;  
 
@@ -47,7 +47,7 @@ const Card = styled.div`
     grid-template-columns: 2fr 1fr;
 
 }
-    img{
+    img{ 
       grid-column: 2;
     }
   }
@@ -93,10 +93,12 @@ const Meta = styled.div`
     font-weight: 900;
         color: var(--mainColor);
 
+
   }
 
   h5{
     font-size: 1rem;
+    margin: 0;
   }
 
     @media ${breakpoints.laptop} {
@@ -115,10 +117,28 @@ const Meta = styled.div`
 
     h4,h5{
       text-align: center;
-
       &.quote{
         font-size: 1rem;
         font-style: italic;
+      }
+    }
+
+    h4{
+      font-weight: 900;
+          color: var(--mainColor);
+          font-size: 1.5rem;
+  
+          @media ${breakpoints.laptop}{
+            font-size: 4rem;
+          }
+  
+  
+    }
+  
+    h5{
+      font-size: 1rem;
+      @media ${breakpoints.laptop}{
+        font-size: 2rem;
       }
     }
   }
@@ -127,21 +147,53 @@ const Meta = styled.div`
 
 const TeamCard = ({ person, full, flipped }) => (
   <Card id={person.fields.teamID}>
-    <Link
+
+    {full ? <FullCard person={person} flipped={flipped} /> : <SmallCard person={person} />}
+
+  </Card>
+)
+
+
+
+const FullCard = ({ person, flipped }) => (
+
+
+  <div
       to={"/team#" + person.fields.teamID}
       style={{ textDecoration: `none`, color: "#212121" }}
-      className={(full ? "full" : "") + " " + (flipped ? "flipped" : "")}
-    >
+      className={"full " + (flipped ? "flipped" : "")}>
       <img src={person.frontmatter.featuredImage.childImageSharp.resize.src} />
-      <Meta className={(full ? "full" : "")}>
+      <Meta className="full">
         <h4>{person.frontmatter.name}</h4>
         <h5>{person.frontmatter.jobTitle}</h5>
-        {full && person.fields.quote ? <h5 className="quote">"{person.fields.quote}"</h5> : ""}
-        {full && person.html ? <Bio dangerouslySetInnerHTML={{ __html: person.html }} /> : ""}
+        {person.fields.quote ? <h5 className="quote">"{person.fields.quote}"</h5> : ""}
+        {person.html ? <Bio dangerouslySetInnerHTML={{ __html: person.html }} /> : ""}
+
+      </Meta>
+    </div>
+
+
+
+
+)
+
+const SmallCard = ({ person }) => (
+
+
+  <Link
+      to={"/team#" + person.fields.teamID}
+      style={{ textDecoration: `none`, color: "#212121" }}>
+      <img src={person.frontmatter.featuredImage.childImageSharp.resize.src} />
+      <Meta>
+        <h4>{person.frontmatter.name}</h4>
+        <h5>{person.frontmatter.jobTitle}</h5>
 
       </Meta>
     </Link>
-  </Card>
+
+
+
+
 )
 
 TeamCard.propTypes = {

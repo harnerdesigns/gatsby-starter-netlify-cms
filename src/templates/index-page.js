@@ -58,13 +58,13 @@ export const IndexPageTemplate = ({
       </Container>
 
       <Container>
-        <h1>We Are Makers.</h1>
+        <h1><Link to="/portfolio">We Are Makers.</Link></h1>
         <Grid col={3}>
           {projects.map(({ node: project }, i) => (
             <ProjectCard project={project} />
             // <ProjectCard project={project} featured={i === 0}/>
           ))}
-        <Link to="/portfolio" className="button" style={{ verticalAlign: "middle", color: "inherit", fontWeight: 100 }}>See The Rest Of Our Work &raquo;</Link>
+        <MorePortfolio to="/portfolio" className="button">See The Rest Of Our Work &raquo;</MorePortfolio>
         </Grid>
 
 
@@ -102,7 +102,7 @@ export const IndexPageTemplate = ({
 
 
       <Container>
-        <h1>Get To Know Us.</h1>
+        <h1><Link to="/team">Get To Know Us.</Link></h1>
         <Grid>
           {team.map(({ node: member }) => (
             <TeamCard person={member} />
@@ -182,7 +182,7 @@ export const pageQuery = graphql`
       }
     }
   }
-  projects: allMarkdownRemark(filter: {frontmatter: {templateKey: {eq: "project"}}}, limit: 5, sort: {fields: fields___weight, order: DESC}) {
+  projects: allMarkdownRemark(filter: {frontmatter: {templateKey: {eq: "project"}}}, limit: 6, sort: {fields: fields___weight, order: DESC}) {
     edges {
       node {
         frontmatter {
@@ -240,6 +240,14 @@ border-radius: var(--borderRadius);
 h4{
   margin: 0;
   text-align: center;
+
+
+  font-size: 1em;
+
+  @media ${breakpoints.laptop} {
+    font-size: inherit;
+
+  }
 }
 
 &:hover{
@@ -267,53 +275,31 @@ bottom:1rem;
 
 `
 
-const Form = styled.form`
-margin: 1em auto;
-font-size: 1.5rem;
-width: 100%;
+const MorePortfolio = styled.a`
 
-@media ${breakpoints.laptop} {
-  width: 75%;
+  verticalAlign: middle; 
+  color: inherit; 
+  font-weight: 100; 
+  margin:0 auto; 
+  background: var(--mainColor); 
+  color: #fff;
+  font-size: 1rem; 
+  width: 100%;
+  grid-column: 1 ;
+
+  
+  @media ${breakpoints.laptop} {
+    width: 80%;
+
+    font-size: 1.5rem;
+  margin:3rem auto 0; 
+    
+  grid-column: 1 / -1;
+
   }
 
 
-input{
-  width: 100%;
-  font-size: 1em;
-  border: 2px solid #fff;
-  background: transparent;
-  color: #fff;
-  padding: 0.25em;
-  margin-bottom: 1em;
-
-}
-
-textarea{
-  width: 100%;
-  font-size: 1em;
-  border: 2px solid #fff;
-  background: transparent;
-  color: #fff;
-  padding: 0.25em;
-  min-height: 5ch;
-  resize: vertical;
-  margin-bottom: 1em;
-
-}
-
-
-button[type=submit]{
-  width: 100%;
-  text-align: center;
-  font-size: 1em;
-  border: 2px solid #fff; 
-  color: #fff;
-  background: transparent; 
-  padding: 0.5em;
-}
-
 `
-
 
 
 const BannerNav = styled.nav`

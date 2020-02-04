@@ -48,7 +48,7 @@ const Card = styled.div`
   position: relative;
   box-shadow: var(--boxShadow);
   border-radius: var(--borderRadius);
-  overflow: hidden;
+  overflow: hidden; 
   img {
     border-radius: var(--borderRadius);
     width: 100%;

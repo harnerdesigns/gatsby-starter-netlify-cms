@@ -1,5 +1,6 @@
 import React from 'react'
 import { navigate } from 'gatsby-link'
+import PropTypes from "prop-types"
 import Layout from '../../components/Layout'
 
 function encode(data) {
@@ -34,6 +35,7 @@ export default class ContactForm extends React.Component {
     }
 
     render() {
+        let labels = this.props.labels
         return (
             <form
                 name="contact"
@@ -54,7 +56,7 @@ export default class ContactForm extends React.Component {
                 </div>
                 <div className="field">
                     <label className="label" htmlFor={'name'}>
-                        Your name
+                        {labels.name}
                   </label>
                     <div className="control">
                         <input
@@ -69,7 +71,7 @@ export default class ContactForm extends React.Component {
                 </div>
                 <div className="field">
                     <label className="label" htmlFor={'email'}>
-                        Email
+                        {labels.email}
                   </label>
                     <div className="control">
                         <input
@@ -84,7 +86,7 @@ export default class ContactForm extends React.Component {
                 </div>
                 <div className="field">
                     <label className="label" htmlFor={'message'}>
-                        Message
+                        {labels.message}
                   </label>
                     <div className="control">
                         <textarea
@@ -98,10 +100,19 @@ export default class ContactForm extends React.Component {
                 </div>
                 <div className="field">
                     <button className="button is-link" type="submit">
-                        Send Message
+                        {labels.submit}
                   </button>
                 </div>
             </form>
         )
     }
 }
+
+
+ContactForm.propTypes = {
+    labels: PropTypes.object,
+}
+
+ContactForm.defaultProps = {
+    labels: {name: "Your Name", email: "Email", message: "Message", submit: "Send Message"},
+  }

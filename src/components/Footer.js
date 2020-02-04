@@ -114,8 +114,15 @@ h1, h2 {
 
 
 form{
+
+  width: 95%;
+  margin: 0 auto;
+  @media ${breakpoints.laptop} {
+
   width: 70%;
   margin: 0 auto 0 0;
+
+  }
 
   label{
     color: #fff;

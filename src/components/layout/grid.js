@@ -8,13 +8,14 @@ const StyledGrid = styled.div`
   padding: 0.5em;
   display: grid;
   width: 100%;
-  grid-template-columns: repeat(${props => (props.col ? props.col/2 : 2)}, 1fr);
+  grid-template-columns: repeat(${props => (props.col ? Math.floor(props.col/2): 2)}, 1fr);
   grid-gap: 2rem;
   align-items: stretch;
   grid-auto-flow: dense;
-
+  
   @media ${breakpoints.laptop} {
     grid-template-columns: repeat(${props => (props.col ? props.col : 5)}, 1fr);
+    max-width: 1380px;
   }
 
 

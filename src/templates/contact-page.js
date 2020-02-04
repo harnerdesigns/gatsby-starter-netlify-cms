@@ -1,13 +1,13 @@
 import React from 'react'
 import { navigate } from 'gatsby-link'
-import Layout from '../../components/Layout'
-import ContactForm from '../../components/contact/contactForm'
+import Layout from '../components/Layout'
+import ContactForm from '../components/contact/contactForm'
 
-import { breakpoints } from "../../components/breakpoints"
+import { breakpoints } from "../components/breakpoints"
 
 import styled from "styled-components"
-import waves from '../../img/waves.svg'
-import SocialIcons from '../../components/SocialIcons'
+import waves from '../img/waves.svg'
+import SocialIcons from '../components/SocialIcons'
 
 
 
@@ -20,21 +20,23 @@ function encode(data) {
 export default class Index extends React.Component {
   constructor(props) {
     super(props)
-    this.state = { isValidated: false }
+    this.state = { isValidated: false, pageContent: {...this.props.data.markdownRemark.frontmatter} }
+    console.log(this.state);
   }
 
 
 
   render() {
+    let content = this.state.pageContent
     return (
       <Layout cta={false}>
         <ContactContainer>
             <ContactContent>
-              <h1>Contact</h1>
+              <h1>{ content.title }</h1>
               
-              <ContactForm />
+              <ContactForm labels={{name: content.nameLabel, email: content.emailLabel, message: content.messageLabel, submit: content.submitLabel  }} />
       <hr className="or" />
-      <h4 style={{margin: 0}}>Find Us Online</h4> 
+      <h4 style={{margin: 0}}>{content.socialHeader}</h4> 
               <SocialIcons color="#333" width="3rem"/>
 
             </ContactContent>
@@ -43,6 +45,24 @@ export default class Index extends React.Component {
     )
   }
 }
+
+
+
+export const ContactPageQuery = graphql`
+  query ContactPage($id: String!) {
+    markdownRemark(id: { eq: $id }) {
+      html
+      frontmatter {
+        title
+        nameLabel
+        emailLabel
+        messageLabel
+        submitLabel
+        socialHeader
+      }
+    }
+  }
+`
 
 const ContactContainer = styled.section`
 
