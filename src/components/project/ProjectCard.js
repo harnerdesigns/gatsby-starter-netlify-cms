@@ -5,33 +5,47 @@ import styled from "styled-components"
 
 import React from "react"
 
-import AniLink from "gatsby-plugin-transition-link/AniLink"
-
-
 const Meta = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction:column;
-  margin: 0 0 auto;
   padding: 0.5em 0;
   width: 100%;
-  position: absolute;
-  top: 50%;
-  transform: translate(0, -50%);
-  background: rgba(255,255,255,0.8);
   color: #333;
   transition: 100ms;
+  z-index: 2;
 
-  h4,h5
-  {
-    margin: 0;
+  p{
+    font-weight: 100;
     text-align: center;
+    margin: 0;
   }
 
-  h4{
-    font-weight: 900;
+`
+
+const ImgWrapper = styled.div`
+  width: 100%;
+  position: relative;
+  overflow: hidden; 
+  border-radius: var(--borderRadius);
+  box-shadow: 0 3px 6px -2px rgba(0, 0, 0, 0.4);
+  transition: 300ms;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+
+  img {
+    border-radius: var(--borderRadius);
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    margin-bottom: auto;
+    transition: transform 1000ms;
   }
+
 
 `
 
@@ -45,44 +59,34 @@ const Card = styled.div`
   flex-direction: column;
   min-width: 100%;
   height: 100%;
-  position: relative;
-  box-shadow: var(--boxShadow);
-  border-radius: var(--borderRadius);
-  overflow: hidden; 
-  img {
-    border-radius: var(--borderRadius);
-    width: 100%;
-    height: auto;
-    margin-bottom: auto;
-    transition: transform 1000ms, filter 300ms;
-  }
+
 
   &:hover{
 
-    ${Meta}{
-      background: var(--mainColor);
-      color: #fff;
-      box-shadow: var(--boxShadow);
+    ${ImgWrapper}{
+      img{
+        transform: scale(1.1);
+      }
     }
-
-    img{transform: scale(1.1); filter: blur(5px);}
   }
 `
 
 const ProjectCard = ({ project, style, featured }) => (
-  <AniLink cover direction="down" bg={"url("+project.frontmatter.featuredImage.childImageSharp.resize.src + ") center / cover"}
+  <Link cover direction="down" bg={"url(" + project.frontmatter.featuredImage.childImageSharp.resize.src + ") center / cover"}
     to={project.fields.slug}
     style={{ textDecoration: `none`, color: "#212121", ...style }}
-    className = { featured ? "featured" : ""}
+    className={featured ? "featured" : ""}
   >
     <Card>
+      <ImgWrapper>
       <img src={project.frontmatter.featuredImage.childImageSharp.resize.src} />
+      </ImgWrapper>
       <Meta>
-        <h4>{project.frontmatter.title}</h4>
-{project.fields.type && <h5>{project.fields.type} {project.fields.clients[0] && <span>for {project.fields.clients}</span>}</h5>}
+        <p>{project.frontmatter.title}</p>
+        {/* {project.fields.type && <h5>{project.fields.type} {project.fields.clients[0] && <span>for {project.fields.clients}</span>}</h5>} */}
       </Meta>
     </Card>
-  </AniLink>
+  </Link>
 )
 
 ProjectCard.propTypes = {

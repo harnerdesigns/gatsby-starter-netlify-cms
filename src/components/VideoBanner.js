@@ -49,7 +49,7 @@ class VideoBanner extends React.Component {
   render = () => {
     return (
       <VideoContainer>
-        <video ref="vidRef" loop muted preload="none" poster={BannerCover} 
+        <video ref="vidRef" loop muted playsInline preload="none" poster={BannerCover} 
         style={{ 
           
         filter: "grayscale(1)",

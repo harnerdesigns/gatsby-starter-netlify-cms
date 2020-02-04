@@ -64,7 +64,7 @@ export const IndexPageTemplate = ({
             <ProjectCard project={project} />
             // <ProjectCard project={project} featured={i === 0}/>
           ))}
-        <MorePortfolio to="/portfolio" className="button">See The Rest Of Our Work &raquo;</MorePortfolio>
+        <MorePortfolio href="/portfolio" className="button">See The Rest Of Our Work &raquo;</MorePortfolio>
         </Grid>
 
 
@@ -190,7 +190,7 @@ export const pageQuery = graphql`
           
           featuredImage {
             childImageSharp {
-              resize(width: 1200, height: 672, cropFocus: CENTER  ) {
+              resize(width: 600, height: 600, cropFocus: CENTER  ) {
                 src
               }
             }

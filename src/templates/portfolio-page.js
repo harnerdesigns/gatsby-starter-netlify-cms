@@ -21,7 +21,7 @@ export const PortfolioPageTemplate = ({ title, content, contentComponent, projec
 
       <Grid col={3} >
         {projects.map(({ node: project }, i) => (
-          <ProjectCard project={project} featured={i === 0 || i % 4 === 0} />
+          <ProjectCard project={project} />
         ))}
       </Grid>
     </Container>
@@ -72,7 +72,7 @@ export const portfolioPageQuery = graphql`
             
             featuredImage {
               childImageSharp {
-              resize(width: 1200, height: 672, cropFocus: CENTER  ) {
+              resize(width: 600, height: 600, cropFocus: CENTER  ) {
                 src
               }
             }

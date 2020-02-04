@@ -3,7 +3,7 @@
 
 // Config vars
 // Kaldi logo brand color: #FD461E
-$kaldi-red: #D64000;
+$kaldi-red: #d64000;
 $kaldi-red-invert: #fff;
 
 $primary: $kaldi-red;
@@ -11,33 +11,33 @@ $primary-invert: $kaldi-red-invert;
 $body-color: #333;
 $black: #2b2523;
 
-$mainColor: #9C27B0;
+$mainColor: #9c27b0;
 $darkerColor: darken($mainColor, 10);
 
-:root{
-
+:root {
   --mainColor: #a29bfe;
   --darkerColor: #6c5ce7;
   --borderRadius: 10px;
-  --boxShadow: 0 3px 6px -2px rgba(0,0,0,0.4);
+  --boxShadow: 0 3px 6px -2px rgba(0, 0, 0, 0.4);
 }
 
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,400i,900, 900i&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,400i,900, 900i&display=swap");
 @font-face {
   font-family: "SeattleSans";
   src: url("../fonts/SeattleSans.eot"); /* IE9 Compat Modes */
-  src: url("../fonts/SeattleSans.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
-    url("../fonts/SeattleSans.otf") format("opentype"), /* Open Type Font */
-    url("../fonts/SeattleSans.svg") format("svg"), /* Legacy iOS */
-    url("../fonts/SeattleSans.ttf") format("truetype"), /* Safari, Android, iOS */
-    url("../fonts/SeattleSans.woff") format("woff"), /* Modern Browsers */
-    url("../fonts/SeattleSans.woff2") format("woff2"); /* Modern Browsers */
+  src: url("../fonts/SeattleSans.eot?#iefix") format("embedded-opentype"),
+    /* IE6-IE8 */ url("../fonts/SeattleSans.otf") format("opentype"),
+    /* Open Type Font */ url("../fonts/SeattleSans.svg") format("svg"),
+    /* Legacy iOS */ url("../fonts/SeattleSans.ttf") format("truetype"),
+    /* Safari, Android, iOS */ url("../fonts/SeattleSans.woff") format("woff"),
+    /* Modern Browsers */ url("../fonts/SeattleSans.woff2") format("woff2"); /* Modern Browsers */
   font-weight: normal;
   font-style: normal;
 }
 
 .navbar .navbar-menu {
-  box-shadow:none !important {}
+  box-shadow:none !important {
+  }
 }
 
 .content .taglist {
@@ -93,9 +93,9 @@ $darkerColor: darken($mainColor, 10);
   border-radius: var(--borderRadius);
   text-decoration: none;
   font-weight: 700;
-  color: #CC3700;
+  color: #cc3700;
   text-align: center;
-  -webkit-box-shadow: inset 0 0 0 2px #CC3700;
+  -webkit-box-shadow: inset 0 0 0 2px #cc3700;
   box-shadow: inset 0 0 0 2px #f40;
   -webkit-transition: all 0.15s ease;
   transition: all 0.15s ease;
@@ -144,7 +144,8 @@ $menu-label-color: $white-ter;
   display: flex;
   align-items: center;
   justify-content: center;
-flex-direction: row;}
+  flex-direction: row;
+}
 
 .social a {
   background-color: $white-ter;
@@ -155,7 +156,6 @@ flex-direction: row;}
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
 }
 
 // blog roll
@@ -182,7 +182,6 @@ flex-direction: row;}
   }
 }
 
-
 @include mobile {
   .blog-list-item header {
     display: block;
@@ -195,7 +194,6 @@ flex-direction: row;}
   }
 }
 
-
 body {
   background-color: white;
   font-weight: 400;
@@ -203,20 +201,25 @@ body {
   color: #333;
   margin: 0;
   font-family: "Montserrat", sans-serif;
-
 }
 
-p {margin-bottom: 1.15rem;}
+p {
+  margin-bottom: 1.15rem;
+}
 
-a{
+a {
   color: var(--mainColor);
 
-  &:hover{
+  &:hover {
     color: var(--darkerColor);
   }
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   margin: 2.75rem 0 1.05rem;
   font-weight: 400;
   line-height: 1.15;
@@ -228,19 +231,29 @@ h1 {
   font-weight: 900;
 }
 
-h2 {font-size: 2.441em;}
+h2 {
+  font-size: 2.441em;
+}
 
-h3 {font-size: 1.953em;}
+h3 {
+  font-size: 1.953em;
+}
 
-h4 {font-size: 1.563em;}
+h4 {
+  font-size: 1.563em;
+}
 
-h5 {font-size: 1.25em;}
+h5 {
+  font-size: 1.25em;
+}
 
-small, .text_small {font-size: 0.8em;}
+small,
+.text_small {
+  font-size: 0.8em;
+}
 
-hr{
-
-  background: #333!important;
+hr {
+  background: #333 !important;
   height: 5px;
   width: 80%;
   margin: 5rem auto;
@@ -248,10 +261,10 @@ hr{
   position: relative;
   border-radius: 3px;
 
+  &.or {
+    overflow: visible;
 
-  &.or{
-
-    &:after{
+    &:after {
       content: "OR";
       font-size: 1rem;
       background: #fff;

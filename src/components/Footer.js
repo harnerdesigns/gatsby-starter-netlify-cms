@@ -18,24 +18,22 @@ const Footer = class extends React.Component {
     return (
       <>
 
-      {this.props.cta && <FooterCTA>
+        {this.props.cta && <FooterCTA>
 
-        <div>
-      <h2>We Want To Help Tell</h2>
-      <h1><em>Your</em> Story.</h1>
-      <p>Drop us a line and let us know what story you're trying to tell</p>
-      </div>
+          <div>
+            <h2>We'd love to hear from you.</h2>
+          </div>
 
           <ContactForm />
-      </FooterCTA>}
+        </FooterCTA>}
 
-      <StyledFooter>
-        <h5 style={{ color: "#fff", fontWeight: "100", display: "flex", alignItems: "center",justifyContent:"center" }}>&copy;&nbsp;2020 <Link to="/" title="Logo" style={{ margin: "0 0 0 0.5em", display: "flex", alignItems: "center", justifyContent: "center" }}><img src={logo} alt="Sweatshirt" style={{ width: 'auto', height: '1.25em' }} /></Link>
-        </h5>
+        <StyledFooter>
+          <h5 style={{ color: "#fff", fontWeight: "100", display: "flex", alignItems: "center", justifyContent: "center" }}>&copy;&nbsp;2020 <Link to="/" title="Logo" style={{ margin: "0 0 0 0.5em", display: "flex", alignItems: "center", justifyContent: "center" }}><img src={logo} alt="Sweatshirt" style={{ width: 'auto', height: '1.25em' }} /></Link>
+          </h5>
 
-        <SocialIcons />
+          <SocialIcons />
 
-      </StyledFooter>
+        </StyledFooter>
       </>
     )
   }

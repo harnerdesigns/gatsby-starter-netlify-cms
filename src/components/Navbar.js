@@ -1,7 +1,6 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-import AniLink from "gatsby-plugin-transition-link/AniLink"
 import github from '../img/github-icon.svg'
 import logo from '../img/logo.svg'
 import styled from 'styled-components'
@@ -47,9 +46,9 @@ const Navbar = class extends React.Component {
       >
         <div className="container">
           <div className="navbar-brand">
-            <AniLink cover bg="#9C27B0" to="/" className="navbar-item" title="Logo">
+            <Link cover bg="#A29BFE" to="/" className="navbar-item" title="Logo">
               <Logo src={logo} alt="Sweatshirt" />
-            </AniLink>
+            </Link>
             {/* Hamburger menu */}
             <div
               className={`navbar-burger burger ${this.state.navBarActiveClass}`}
@@ -66,18 +65,18 @@ const Navbar = class extends React.Component {
             className={`navbar-menu ${this.state.navBarActiveClass}`}
           >
             <div className="navbar-start has-text-centered">
-              <AniLink cover bg="#9C27B0" className="navbar-item" to="/portfolio">
+              <Link cover bg="#A29BFE" className="navbar-item" to="/portfolio">
                 Portfolio
-              </AniLink>
-              <AniLink cover bg="#9C27B0" className="navbar-item" to="/team">
+              </Link>
+              <Link cover bg="#A29BFE" className="navbar-item" to="/team">
                 Team
-              </AniLink>
-              <AniLink cover bg="#9C27B0" className="navbar-item" to="/about">
+              </Link>
+              <Link cover bg="#A29BFE" className="navbar-item" to="/about">
                 About
-              </AniLink>
-              <AniLink cover bg="#9C27B0" className="navbar-item" to="/contact">
+              </Link>
+              <Link cover bg="#A29BFE" className="navbar-item" to="/contact">
                 Contact
-              </AniLink>
+              </Link>
             </div>
           </div>
         </div>

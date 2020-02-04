@@ -78,7 +78,7 @@ const Meta = styled.div`
   margin: 0.5em 0;
   width: 100%;
 
-  @media ${breakpoints.laptop} {
+  @media ${breakpoints.laptopL} {
   grid-template-columns: 1fr 1fr;
 
   }
@@ -101,7 +101,7 @@ const Meta = styled.div`
     margin: 0;
   }
 
-    @media ${breakpoints.laptop} {
+    @media ${breakpoints.laptopL} {
     h4{
       text-align: left;
     }

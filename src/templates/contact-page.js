@@ -107,11 +107,10 @@ margin-left: auto;
 background: #fff;
 z-index: 1;
 position: relative;
-box-shadow: var(--boxShadow);
 
 &:after{
   content: '';
-  width: 5vw;
+  width: 6vw;
   height: 105vh;
   transform: rotate(5deg) translate(-50%);
   position: absolute;
@@ -120,8 +119,6 @@ box-shadow: var(--boxShadow);
   z-index: -1;
   top: 0;
   left: 0;
-  box-shadow: var(--boxShadow);
-
 }
 
 }
