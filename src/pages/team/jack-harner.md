@@ -5,4 +5,4 @@ jobTitle: Developer
 featuredImage: /img/jack-harner.jpg
 quote: It's Always DNS
 ---
-Lead Developer, Cat-Daddy of 4, Lover of WordPress & CSS.
+Lead Developer, Cat Dad of 4, Lover of WordPress & CSS.
